@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -8,43 +8,65 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/iv_background_menu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/background_menu"/>
+        android:src="@drawable/background_menu" />
 
     <ImageView
+        android:id="@+id/iv_sabrina_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="200dp"
-        android:maxHeight="200dp"
-        android:layout_marginTop="50dp"
-        android:scaleType="fitCenter"
+        android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
-        android:src="@drawable/menu_drawable"/>
+        android:maxWidth="200dp"
+        android:maxHeight="200dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sabrina_menu" />
 
+    <EditText
+        android:id="@+id/edt_input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_sabrina_menu"
+        android:layout_centerInParent="true"
+        android:drawableStart="@drawable/ic_baseline"
+        android:maxLines="1"
+        android:layout_marginLeft="86dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/grey"
+        android:gravity="center"
+        android:hint="'Input Your Name Here'"
+        android:padding="16dp" />
 
     <Button
         android:id="@+id/btn_play"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/button_shape"
-        android:hint="PLAY"
-        android:textColorHint="@color/white"/>
-
-    <Button
-        android:id="@+id/btn_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_input_name"
+        android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
         android:background="@drawable/button_shape"
-        android:hint="EXIT"
-        android:textColorHint="@color/white"/>
+        android:fontFamily="@font/poppinsbold"
+        android:hint="PLAY"
+        android:textColorHint="@color/white" />
 
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_suit_binar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="'Game Suit Binar Challenge'"
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="@color/black"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/btn_play"/>
+
+</RelativeLayout>

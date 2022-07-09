@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_background_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="200dp"
+            android:maxHeight="200dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/background_menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_sabrina_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="true"
+            android:maxWidth="200dp"
+            android:maxHeight="200dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sabrina_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_background_menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_suit_binar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="'Game Suit Binar Challenge'"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/poppinsbold"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/edt_input_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:maxLines="1"
+            android:hint="'Input Your Name Here'"
+            android:gravity="center"
+            android:background="@drawable/button_shape"
+            android:drawableStart="@drawable/ic_baseline"
+            android:padding="16dp"
+            android:backgroundTint="@color/grey"/>
+
+        <Button
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppinsbold"
+            android:hint="PLAY"
+            android:textColorHint="@color/white"/>
+
+    </LinearLayout>
+
+</LinearLayout>
