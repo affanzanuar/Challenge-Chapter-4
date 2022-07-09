@@ -42,11 +42,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 playActivity.putExtra(PlayActivity.PLAYER_NAME,inputName)
                 startActivity(playActivity)
             }
-
         }
-    }
-
-    companion object{
-        const val INPUT_NAME = "input_name"
     }
 }
