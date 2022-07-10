@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/iv_background_menu"
         android:layout_width="match_parent"
@@ -17,56 +16,64 @@
         android:scaleType="fitCenter"
         android:src="@drawable/background_menu" />
 
-    <ImageView
-        android:id="@+id/iv_sabrina_menu"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:layout_centerInParent="true"
-        android:layout_gravity="center_horizontal"
-        android:adjustViewBounds="true"
-        android:maxWidth="200dp"
-        android:maxHeight="200dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/sabrina_menu" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edt_input_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_sabrina_menu"
-        android:layout_centerInParent="true"
-        android:drawableStart="@drawable/ic_baseline"
-        android:maxLines="1"
-        android:layout_marginLeft="86dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/button_shape"
-        android:backgroundTint="@color/grey"
-        android:gravity="center"
-        android:hint="'Input Your Name Here'"
-        android:padding="16dp" />
+        <TextView
+            android:id="@+id/tv_suit_binar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="'Game Suit Binar Challenge'"
+            android:textColor="@color/black" />
 
-    <Button
-        android:id="@+id/btn_play"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edt_input_name"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_shape"
-        android:fontFamily="@font/poppinsbold"
-        android:hint="PLAY"
-        android:textColorHint="@color/white" />
+        <ImageView
+            android:id="@+id/iv_sabrina_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:maxWidth="200dp"
+            android:maxHeight="200dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sabrina_menu" />
 
+        <Button
+            android:id="@+id/btn_multi_player"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinsbold"
+            android:hint="Two Player"
+            android:textColorHint="@color/white" />
 
-    <TextView
-        android:id="@+id/tv_suit_binar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="'Game Suit Binar Challenge'"
-        android:fontFamily="@font/poppinsbold"
-        android:textColor="@color/black"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/btn_play"/>
+        <Button
+            android:id="@+id/btn_single_player"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinsbold"
+            android:hint="VS Sabrina"
+            android:textColorHint="@color/white" />
+
+        <Button
+            android:id="@+id/btn_help"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinsbold"
+            android:hint="Help"
+            android:textColorHint="@color/white" />
+
+    </LinearLayout>
 
 </RelativeLayout>

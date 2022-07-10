@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
-            android:maxWidth="200dp"
-            android:maxHeight="200dp"
+            android:maxWidth="250dp"
+            android:maxHeight="250dp"
             android:scaleType="fitCenter"
             android:src="@drawable/sabrina_menu"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,29 +58,35 @@
             android:fontFamily="@font/poppinsbold"
             android:textColor="@color/black"/>
 
-        <EditText
-            android:id="@+id/edt_input_name"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+        <Button
+            android:id="@+id/btn_multi_player"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
             android:layout_marginTop="32dp"
-            android:maxLines="1"
-            android:hint="'Input Your Name Here'"
-            android:gravity="center"
             android:background="@drawable/button_shape"
-            android:drawableStart="@drawable/ic_baseline"
-            android:padding="16dp"
-            android:backgroundTint="@color/grey"/>
+            android:fontFamily="@font/poppinsbold"
+            android:hint="Two Player"
+            android:textColorHint="@color/white"/>
 
         <Button
-            android:id="@+id/btn_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btn_single_player"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/button_shape"
-            android:layout_marginTop="32dp"
             android:fontFamily="@font/poppinsbold"
-            android:hint="PLAY"
+            android:hint="Vs Sabrina"
             android:textColorHint="@color/white"/>
+
+        <Button
+            android:id="@+id/btn_help"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinsbold"
+            android:hint="Help"
+            android:textColorHint="@color/white" />
 
     </LinearLayout>
 
