@@ -51,13 +51,10 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
         btnReset.setOnClickListener(this)
     }
 
-    private fun getRefreshSelectedUser(){
+    private fun getRefreshSelected(){
         batu_player.setBackgroundResource(0)
         kertas_player.setBackgroundResource(0)
         gunting_player.setBackgroundResource(0)
-    }
-
-    private fun getRefreshSelectedBot(){
         batu_opponent.setBackgroundResource(0)
         kertas_opponent.setBackgroundResource(0)
         gunting_opponent.setBackgroundResource(0)
@@ -103,33 +100,29 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.batu_player -> {
-                getRefreshSelectedUser()
-                getRefreshSelectedBot()
+                getRefreshSelected()
                 batu_player.setBackgroundResource(R.drawable.select_button)
                 playerOne.playerHand = HandType.A.nameHand
                 startWithBot()
             }
 
             R.id.kertas_player -> {
-                getRefreshSelectedUser()
-                getRefreshSelectedBot()
+                getRefreshSelected()
                 kertas_player.setBackgroundResource(R.drawable.select_button)
                 playerOne.playerHand = HandType.B.nameHand
                 startWithBot()
             }
 
             R.id.gunting_player -> {
-                getRefreshSelectedUser()
-                getRefreshSelectedBot()
+                getRefreshSelected()
                 gunting_player.setBackgroundResource(R.drawable.select_button)
                 playerOne.playerHand = HandType.C.nameHand
                 startWithBot()
             }
 
             R.id.btn_refresh -> {
-                getRefreshSelectedUser()
-                getRefreshSelectedBot()
-
+                getRefreshSelected()
+                ivVersus.setImageResource(R.drawable.versus)
             }
         }
     }
