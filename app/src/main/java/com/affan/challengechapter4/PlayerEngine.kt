@@ -2,29 +2,40 @@ package com.affan.challengechapter4
 
 import android.util.Log
 
-abstract class PlayerEngine  {
+abstract class PlayerEngine {
 
     open var score : Int = 0
     open var health : Double = 100.0
-    abstract fun playerHand() : String
+    open var playerHand : String = ""
+    abstract fun playerHand () : String
 
     var a = HandType.A.nameHand
     var b = HandType.B.nameHand
     var c = HandType.C.nameHand
 
-    fun isAttackWin(opponent : PlayerEngine) : Boolean{
-        val playerHand = this.playerHand()
-        val opponentHand = opponent.playerHand()
-        return playerHand==a && opponentHand==b ||
-            playerHand==b && opponentHand==c ||
-            playerHand==c && opponentHand==a
+    fun attack(opponent : PlayerEngine) : String {
+        val playerHand = this.playerHand
+        val opponentHand = opponent.playerHand
+        return if (playerHand==opponentHand){
+            Log.e("myHand in PlayerEngine",playerHand)
+            Log.e("handBot in PlayerEngine",opponentHand)
+            Log.d("BINAR","draw")
+            "draw"
+        } else if (
+                playerHand==a && opponentHand==c ||
+                playerHand==b && opponentHand==a ||
+                playerHand==c && opponentHand==b) {
+            this.score++
+            Log.e("myHand in PlayerEngine",playerHand)
+            Log.e("handBot in PlayerEngine",opponentHand)
+            Log.d("BINAR","win")
+            "win"
+        } else {
+            opponent.score++
+            Log.e("myHand in PlayerEngine",playerHand)
+            Log.e("handBot in PlayerEngine",opponentHand)
+            Log.d("BINAR","lose")
+            "lose"
+        }
     }
-
-    fun isAttackDraw(opponent : PlayerEngine) : Boolean{
-        val playerHand = this.playerHand()
-        val opponentHand = opponent.playerHand()
-        return playerHand == opponentHand
-    }
-
-
 }

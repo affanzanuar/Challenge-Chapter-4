@@ -3,6 +3,7 @@ package com.affan.challengechapter4
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -20,14 +21,13 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btnRockBot : ImageView
     private lateinit var btnPaperBot : ImageView
     private lateinit var btnScissorBot : ImageView
+    private lateinit var ivVersus : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
-
         getInitComponent()
         getInitListener()
-
     }
 
     private fun getInitComponent(){
@@ -40,6 +40,7 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
         btnPaperBot = findViewById(R.id.kertas_opponent)
         btnScissorBot = findViewById(R.id.gunting_opponent)
         btnReset = findViewById(R.id.btn_refresh)
+        ivVersus = findViewById(R.id.iv_versus)
     }
 
     private fun getInitListener(){
@@ -50,89 +51,113 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
         btnReset.setOnClickListener(this)
     }
 
-    private fun getRockSelectedUser(){
-        batu_player.setBackgroundResource(R.drawable.select_button)
-        kertas_player.setBackgroundResource(R.drawable.reset_background)
-        gunting_player.setBackgroundResource(R.drawable.reset_background)
+    private fun getRefreshSelectedUser(){
+        batu_player.setBackgroundResource(0)
+        kertas_player.setBackgroundResource(0)
+        gunting_player.setBackgroundResource(0)
     }
 
-    private fun getScissorSelectedUser(){
-        batu_player.setBackgroundResource(R.drawable.reset_background)
-        kertas_player.setBackgroundResource(R.drawable.reset_background)
-        gunting_player.setBackgroundResource(R.drawable.select_button)
+    private fun getRefreshSelectedBot(){
+        batu_opponent.setBackgroundResource(0)
+        kertas_opponent.setBackgroundResource(0)
+        gunting_opponent.setBackgroundResource(0)
     }
 
-    private fun getPaperSelectedUser(){
-        batu_player.setBackgroundResource(R.drawable.reset_background)
-        kertas_player.setBackgroundResource(R.drawable.select_button)
-        gunting_player.setBackgroundResource(R.drawable.reset_background)
-    }
+    companion object {
+        private val playerOne = Person()
+        private val playerBot = Bot()
+//        val handBot = playerBot.playerHand()
 
-    private fun getRockSelectedBot(){
-        batu_opponent.setBackgroundResource(R.drawable.select_button)
-        kertas_opponent.setBackgroundResource(R.drawable.reset_background)
-        gunting_opponent.setBackgroundResource(R.drawable.reset_background)
-    }
+//        fun hassd () : String {
+//            return playerBot.playerHand()
+//        }
 
-    private fun getScissorSelectedBot(){
-        batu_opponent.setBackgroundResource(R.drawable.reset_background)
-        kertas_opponent.setBackgroundResource(R.drawable.reset_background)
-        gunting_opponent.setBackgroundResource(R.drawable.select_button)
     }
-
-    private fun getPaperSelectedBot(){
-        batu_opponent.setBackgroundResource(R.drawable.reset_background)
-        kertas_opponent.setBackgroundResource(R.drawable.select_button)
-        gunting_opponent.setBackgroundResource(R.drawable.reset_background)
-    }
-
-    private fun getRefresh(){
-        batu_player.setBackgroundResource(R.drawable.reset_background)
-        kertas_player.setBackgroundResource(R.drawable.reset_background)
-        gunting_player.setBackgroundResource(R.drawable.reset_background)
-        batu_opponent.setBackgroundResource(R.drawable.reset_background)
-        kertas_opponent.setBackgroundResource(R.drawable.reset_background)
-        gunting_opponent.setBackgroundResource(R.drawable.reset_background)
-    }
-
-    private val playerBot = Bot()
 
     override fun onClick(p0: View?) {
+//        var ksrkd = hassd()
+
+        fun randomHandBot(handi : String) {
+            when(handi){
+                HandType.A.nameHand -> btnRockBot.setBackgroundResource(R.drawable.select_button)
+                HandType.B.nameHand -> btnPaperBot.setBackgroundResource(R.drawable.select_button)
+                HandType.C.nameHand -> btnScissorBot.setBackgroundResource(R.drawable.select_button)
+            }
+        }
+
+//        var fambarTgn = mapOf(
+//            HandType.A.nameHand to btnRockBot.setBackgroundResource(R.drawable.select_button),
+//            HandType.B.nameHand to btnPaperBot.setBackgroundResource(R.drawable.select_button),
+//            HandType.C.nameHand to btnScissorBot.setBackgroundResource(R.drawable.select_button)
+//        )
+//
+//        fun pickRandomBot(option : String) {
+//            return fambarTgn[option]!!
+//        }
+
+        val arrayHand = arrayOf(
+            HandType.A.nameHand,
+            HandType.B.nameHand,
+            HandType.C.nameHand
+        ).random()
 
         when (p0?.id) {
-            R.id.btn_back -> {
-                val backToLanding = Intent(this,MainActivity::class.java)
-                backToLanding.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(backToLanding)
-            }
 
             R.id.batu_player -> {
-                getRockSelectedUser()
-                startGameWithBot(HandType.A.nameHand)
+                getRefreshSelectedUser()
+                getRefreshSelectedBot()
+                batu_player.setBackgroundResource(R.drawable.select_button)
+                playerOne.playerHand = HandType.A.nameHand
+//                playerBot.playerHand = hassd()
+
+                playerBot.playerHand = arrayHand
+                playerOne.attack(playerBot)
+                randomHandBot(playerBot.playerHand)
+                Log.e("myHand in Activity", playerOne.playerHand)
+                Log.e("handBot on Activity", playerBot.playerHand)
             }
 
             R.id.kertas_player -> {
-                getPaperSelectedUser()
-                startGameWithBot(HandType.B.nameHand)
+                getRefreshSelectedUser()
+                getRefreshSelectedBot()
+                kertas_player.setBackgroundResource(R.drawable.select_button)
+                playerOne.playerHand = HandType.B.nameHand
+//                playerBot.playerHand = hassd()
+//                hassd()
+                playerBot.playerHand = arrayHand
+                playerOne.attack(playerBot)
+                randomHandBot(playerBot.playerHand)
+                Log.e("myHand in Activity", playerOne.playerHand)
+                Log.e("handBot on Activity",playerBot.playerHand)
             }
 
             R.id.gunting_player -> {
-                getScissorSelectedUser()
-                startGameWithBot(HandType.C.nameHand)
+
+                getRefreshSelectedUser()
+                getRefreshSelectedBot()
+                gunting_player.setBackgroundResource(R.drawable.select_button)
+                playerOne.playerHand = HandType.C.nameHand
+
+//                playerBot.playerHand = hassd()
+//                hassd()
+                playerBot.playerHand = arrayHand
+                playerOne.attack(playerBot)
+                randomHandBot(playerBot.playerHand)
+                Log.e("myHand in Activity", playerOne.playerHand)
+                Log.e("handBot on Activity",playerBot.playerHand)
+            }
+
+            R.id.btn_back -> {
+                val backToLanding = Intent(this,MainActivity::class.java)
+                backToLanding.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                        Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(backToLanding)
             }
 
             R.id.btn_refresh -> {
-                getRefresh()
+                getRefreshSelectedUser()
+                getRefreshSelectedBot()
             }
         }
-    }
-
-    private fun startGameWithBot (handType : String){
-        when (playerBot.playerHand()){
-            HandType.A.nameHand -> getRockSelectedBot()
-            HandType.B.nameHand -> getPaperSelectedBot()
-            HandType.C.nameHand -> getScissorSelectedBot()
-        }
-
     }
 }
