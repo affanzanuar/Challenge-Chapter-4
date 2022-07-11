@@ -7,7 +7,6 @@ abstract class PlayerEngine {
     open var score : Int = 0
     open var health : Double = 100.0
     open var playerHand : String = ""
-    abstract fun playerHand () : String
 
     var a = HandType.A.nameHand
     var b = HandType.B.nameHand
@@ -16,25 +15,28 @@ abstract class PlayerEngine {
     fun attack(opponent : PlayerEngine) : String {
         val playerHand = this.playerHand
         val opponentHand = opponent.playerHand
-        return if (playerHand==opponentHand){
+
+        fun logHand(){
             Log.e("myHand in PlayerEngine",playerHand)
             Log.e("handBot in PlayerEngine",opponentHand)
-            Log.d("BINAR","draw")
+        }
+
+        return if (playerHand==opponentHand){
+            Log.d("RESULT","draw")
+            logHand()
             "draw"
         } else if (
                 playerHand==a && opponentHand==c ||
                 playerHand==b && opponentHand==a ||
                 playerHand==c && opponentHand==b) {
             this.score++
-            Log.e("myHand in PlayerEngine",playerHand)
-            Log.e("handBot in PlayerEngine",opponentHand)
-            Log.d("BINAR","win")
+            Log.d("RESULT","win")
+            logHand()
             "win"
         } else {
             opponent.score++
-            Log.e("myHand in PlayerEngine",playerHand)
-            Log.e("handBot in PlayerEngine",opponentHand)
-            Log.d("BINAR","lose")
+            Log.d("RESULT","lose")
+            logHand()
             "lose"
         }
     }

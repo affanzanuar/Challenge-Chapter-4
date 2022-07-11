@@ -63,90 +63,38 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
         gunting_opponent.setBackgroundResource(0)
     }
 
-    companion object {
-        private val playerOne = Person()
-        private val playerBot = Bot()
-//        val handBot = playerBot.playerHand()
-
-//        fun hassd () : String {
-//            return playerBot.playerHand()
-//        }
-
-    }
-
     override fun onClick(p0: View?) {
-//        var ksrkd = hassd()
+        val playerOne = Person()
+        val playerBot = Bot()
+        val randomHand = arrayOf(
+            HandType.A.nameHand,
+            HandType.B.nameHand,
+            HandType.C.nameHand
+        ).random()
 
-        fun randomHandBot(handi : String) {
-            when(handi){
+        fun pickSelectRandomHandBot(hand : String) {
+            when(hand){
                 HandType.A.nameHand -> btnRockBot.setBackgroundResource(R.drawable.select_button)
                 HandType.B.nameHand -> btnPaperBot.setBackgroundResource(R.drawable.select_button)
                 HandType.C.nameHand -> btnScissorBot.setBackgroundResource(R.drawable.select_button)
             }
         }
 
-//        var fambarTgn = mapOf(
-//            HandType.A.nameHand to btnRockBot.setBackgroundResource(R.drawable.select_button),
-//            HandType.B.nameHand to btnPaperBot.setBackgroundResource(R.drawable.select_button),
-//            HandType.C.nameHand to btnScissorBot.setBackgroundResource(R.drawable.select_button)
-//        )
-//
-//        fun pickRandomBot(option : String) {
-//            return fambarTgn[option]!!
-//        }
+        fun startWithBot(){
+            playerBot.playerHand = randomHand
+            val result = playerOne.attack(playerBot)
+            pickSelectRandomHandBot(playerBot.playerHand)
+            Log.e("player one on Activity", playerOne.playerHand)
+            Log.e("player bot on Activity", playerBot.playerHand)
 
-        val arrayHand = arrayOf(
-            HandType.A.nameHand,
-            HandType.B.nameHand,
-            HandType.C.nameHand
-        ).random()
+            when(result){
+                "draw" -> ivVersus.setImageResource(R.drawable.draw)
+                "win" -> ivVersus.setImageResource(R.drawable.win)
+                "lose" -> ivVersus.setImageResource(R.drawable.lose)
+            }
+        }
 
         when (p0?.id) {
-
-            R.id.batu_player -> {
-                getRefreshSelectedUser()
-                getRefreshSelectedBot()
-                batu_player.setBackgroundResource(R.drawable.select_button)
-                playerOne.playerHand = HandType.A.nameHand
-//                playerBot.playerHand = hassd()
-
-                playerBot.playerHand = arrayHand
-                playerOne.attack(playerBot)
-                randomHandBot(playerBot.playerHand)
-                Log.e("myHand in Activity", playerOne.playerHand)
-                Log.e("handBot on Activity", playerBot.playerHand)
-            }
-
-            R.id.kertas_player -> {
-                getRefreshSelectedUser()
-                getRefreshSelectedBot()
-                kertas_player.setBackgroundResource(R.drawable.select_button)
-                playerOne.playerHand = HandType.B.nameHand
-//                playerBot.playerHand = hassd()
-//                hassd()
-                playerBot.playerHand = arrayHand
-                playerOne.attack(playerBot)
-                randomHandBot(playerBot.playerHand)
-                Log.e("myHand in Activity", playerOne.playerHand)
-                Log.e("handBot on Activity",playerBot.playerHand)
-            }
-
-            R.id.gunting_player -> {
-
-                getRefreshSelectedUser()
-                getRefreshSelectedBot()
-                gunting_player.setBackgroundResource(R.drawable.select_button)
-                playerOne.playerHand = HandType.C.nameHand
-
-//                playerBot.playerHand = hassd()
-//                hassd()
-                playerBot.playerHand = arrayHand
-                playerOne.attack(playerBot)
-                randomHandBot(playerBot.playerHand)
-                Log.e("myHand in Activity", playerOne.playerHand)
-                Log.e("handBot on Activity",playerBot.playerHand)
-            }
-
             R.id.btn_back -> {
                 val backToLanding = Intent(this,MainActivity::class.java)
                 backToLanding.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or
@@ -154,9 +102,34 @@ class PlayActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(backToLanding)
             }
 
+            R.id.batu_player -> {
+                getRefreshSelectedUser()
+                getRefreshSelectedBot()
+                batu_player.setBackgroundResource(R.drawable.select_button)
+                playerOne.playerHand = HandType.A.nameHand
+                startWithBot()
+            }
+
+            R.id.kertas_player -> {
+                getRefreshSelectedUser()
+                getRefreshSelectedBot()
+                kertas_player.setBackgroundResource(R.drawable.select_button)
+                playerOne.playerHand = HandType.B.nameHand
+                startWithBot()
+            }
+
+            R.id.gunting_player -> {
+                getRefreshSelectedUser()
+                getRefreshSelectedBot()
+                gunting_player.setBackgroundResource(R.drawable.select_button)
+                playerOne.playerHand = HandType.C.nameHand
+                startWithBot()
+            }
+
             R.id.btn_refresh -> {
                 getRefreshSelectedUser()
                 getRefreshSelectedBot()
+
             }
         }
     }
