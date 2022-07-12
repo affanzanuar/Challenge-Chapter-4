@@ -3,5 +3,5 @@
     <corners android:radius="16dp"/>
     <size android:height="300dp"/>
     <size android:width="300dp"/>
-    <solid android:color="#CFCFCF"/>
+    <solid android:color="@color/button"/>
 </shape>

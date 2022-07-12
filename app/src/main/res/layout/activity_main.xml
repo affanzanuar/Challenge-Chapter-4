@@ -1,79 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/iv_background_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/background_menu" />
-
-    <LinearLayout
+        android:id="@+id/iv_rps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="32dp"
+        android:maxWidth="170dp"
+        android:maxHeight="1700dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/comicsansbold"
+        android:hint="Pemain 1"
+        android:textColorHint="@color/blue"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/batu_player"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/batu_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="90dp"
+        android:maxHeight="90dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/batu"
+        app:layout_constraintBottom_toTopOf="@+id/kertas_player"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/kertas_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="125dp"
+        android:maxWidth="90dp"
+        android:maxHeight="90dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/kertas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/gunting_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="90dp"
+        android:maxHeight="90dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/gunting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kertas_player" />
+
+    <ImageView
+        android:id="@+id/iv_versus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:adjustViewBounds="true"
+        android:layout_marginTop="50dp"
+        android:maxWidth="155dp"
+        android:maxHeight="155dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/versus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_rps" />
 
-        <TextView
-            android:id="@+id/tv_suit_binar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="'Game Suit Binar Challenge'"
-            android:textColor="@color/black" />
+    <TextView
+        android:id="@+id/tv_player_komputer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:fontFamily="@font/comicsansbold"
+        android:hint="COM"
+        android:textColorHint="@color/blue"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/batu_opponent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_sabrina_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="200dp"
-            android:maxHeight="200dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/sabrina_menu" />
+    <ImageView
+        android:id="@+id/batu_opponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="90dp"
+        android:maxHeight="90dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/batu"
+        app:layout_constraintBottom_toTopOf="@+id/kertas_opponent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/btn_multi_player"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/button_shape"
-            android:fontFamily="@font/poppinsbold"
-            android:hint="Two Player"
-            android:textColorHint="@color/white" />
+    <ImageView
+        android:id="@+id/kertas_opponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="125dp"
+        android:maxWidth="90dp"
+        android:maxHeight="90dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/kertas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_single_player"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/button_shape"
-            android:fontFamily="@font/poppinsbold"
-            android:hint="VS Sabrina"
-            android:textColorHint="@color/white" />
+    <ImageView
+        android:id="@+id/gunting_opponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="90dp"
+        android:maxHeight="90dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/gunting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kertas_opponent" />
 
-        <Button
-            android:id="@+id/btn_help"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/button_shape"
-            android:fontFamily="@font/poppinsbold"
-            android:hint="Help"
-            android:textColorHint="@color/white" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/iv_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/white"
+        android:maxWidth="90dp"
+        android:maxHeight="90dp"
+        android:padding="16dp"
+        android:src="@drawable/refresh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

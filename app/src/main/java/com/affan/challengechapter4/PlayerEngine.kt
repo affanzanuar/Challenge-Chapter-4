@@ -8,9 +8,9 @@ abstract class PlayerEngine {
     open var health : Double = 100.0
     open var playerHand : String = ""
 
-    var a = HandType.A.nameHand
-    var b = HandType.B.nameHand
-    var c = HandType.C.nameHand
+    private var a = HandType.A.hand
+    private var b = HandType.B.hand
+    private var c = HandType.C.hand
 
     fun attack(opponent : PlayerEngine) : String {
         val playerHand = this.playerHand
@@ -18,7 +18,7 @@ abstract class PlayerEngine {
 
         fun logHand(){
             Log.e("myHand in PlayerEngine",playerHand)
-            Log.e("handBot in PlayerEngine",opponentHand)
+            Log.e("botHand in PlayerEngine",opponentHand)
         }
 
         return if (playerHand==opponentHand){

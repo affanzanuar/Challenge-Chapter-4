@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="orange_200">#FFCC80</color>
-    <color name="orange_500">#E98B00</color>
+    <color name="primary_color">#FFCC80</color>
+    <color name="secondary_color">#E98B00</color>
+    <color name="blue">#00B0F0</color>
+    <color name="button">#c3dae9</color>
     <color name="black">#FF000000</color>
     <color name="grey">#F1F0F0</color>
     <color name="white">#FFFFFFFF</color>
