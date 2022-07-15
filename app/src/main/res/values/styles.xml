@@ -1,8 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Theme.ChallengeChapter4" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorSecondary">@color/secondary_color</item>
         <item name="colorAccent">@color/black</item>
     </style>
+
+    <style name="header_game" parent="Theme.ChallengeChapter4">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:rotation">-10</item>
+        <item name="fontFamily">@font/comicsansbold</item>
+    </style>
+
+    <style name="player_name" parent="Theme.ChallengeChapter4">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blue_player_name</item>
+        <item name="android:fontFamily">@font/comicsansbold</item>
+    </style>
+
+    <style name="rock_drawable" parent="Theme.ChallengeChapter4">
+        <item name="android:src">@drawable/batu</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="paper_drawable" parent="Theme.ChallengeChapter4">
+        <item name="android:src">@drawable/kertas</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="scissor_drawable" parent="Theme.ChallengeChapter4">
+        <item name="android:src">@drawable/gunting</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="versus_view" parent="Theme.ChallengeChapter4">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/versus</item>
+        <item name="android:justificationMode">inter_word</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="fontFamily">@font/comicsansbold</item>
+        <item name="android:rotation">-10</item>
+        <item name="android:textColor">@color/red_versus</item>
+    </style>
+
+    <style name="refresh_drawable" parent="Theme.ChallengeChapter4">
+        <item name="android:src">@drawable/refresh</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="win" parent="Theme.ChallengeChapter4">
+<!--        <item name="android:textColor">@color/white</item>-->
+<!--        <item name="fontFamily">@string/com</item>-->
+<!--        <item name="android:textColorHint">@color/black</item>-->
+<!--        <item name="colorAccent">@color/header_green</item>-->
+<!--        <item name="backgroundColor">@color/header_green</item>-->
+<!--        <item name="backgroundTint">@color/header_green</item>-->
+    </style>
+
 </resources>

@@ -17,8 +17,8 @@ abstract class PlayerEngine {
         val opponentHand = opponent.playerHand
 
         fun logHand(){
-            Log.e("myHand in PlayerEngine",playerHand)
-            Log.e("botHand in PlayerEngine",opponentHand)
+            Log.d("myHand in PlayerEngine",playerHand)
+            Log.d("botHand in PlayerEngine",opponentHand)
         }
 
         return if (playerHand==opponentHand){

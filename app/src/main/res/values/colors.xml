@@ -2,7 +2,13 @@
 <resources>
     <color name="primary_color">#FFCC80</color>
     <color name="secondary_color">#E98B00</color>
-    <color name="blue">#00B0F0</color>
+    <color name="blue_player_name">#00B0F0</color>
+    <color name="header_yellow">#f6b26b</color>
+    <color name="header_green">#93c47d</color>
+    <color name="winner">#92d050</color>
+    <color name="draw">#0070c0</color>
+    <color name="header_purple">#c27ba0</color>
+    <color name="red_versus">#ff0000</color>
     <color name="button">#c3dae9</color>
     <color name="black">#FF000000</color>
     <color name="grey">#F1F0F0</color>

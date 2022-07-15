@@ -1,12 +1,32 @@
 <resources>
     <string name="app_name">Challenge Chapter 4</string>
-    <string name="pharagraph_one">Rock Paper Scissors (also known by other orderings of the three items, with rock sometimes being called stone, or as Rochambeau, roshambo, or ro-sham-bo) is a hand game originating from China, usually played between two people, in which each player simultaneously forms one of three shapes with an outstretched hand. These shapes are rock (a closed fist), paper (a flat hand), and scissors (a fist with the index finger and middle finger extended, forming a V). Scissors is identical to the two-fingered V sign (also indicating victory or peace) except that it is pointed horizontally instead of being held upright in the air.</string>
-    <string name="paragraph_two">The name Rochambeau, sometimes spelled roshambo or ro-sham-bo and used mainly in the Western United States, is widely believed to be a reference to Count Rochambeau, who, according to a widespread legend, played the game during the American Revolutionary War. This legend is clearly untrue as all evidence points to the game first becoming known in the United States no sooner than sometime during the 1930s. It is unclear why exactly this name ended up being associated with the game, with hypotheses ranging from a slight phonetic similarity with the Japanese name jan-ken-pon to the presence of a statue of Rochambeau in a certain Washington, D.C. neighborhood.</string>
-    <string name="paragraph_three">The players may count aloud to three, or speak the name of the game (e.g. Rock! Paper! Scissors!), either raising one hand in a fist and swinging it down with each syllable or holding it behind their back. They then throw by extending it towards their opponent. Variations include a version where players throw immediately on the third count (thus throwing on the count of Scissors!), or a version where they shake their hands three times before throwing.</string>
-    <string name="paragraph_four">Origins The first known mention of the game was in the book Wuzazu [zh] by the Ming-dynasty writer Xie Zhaozhe [zh] (fl. c. 1600), who wrote that the game dated back to the time of the Han dynasty (206 BCE – 220 CE).[9] In the book, the game was called shoushiling. Li Rihua\'s book Note of Liuyanzhai also mentions this game, calling it shoushiling (t. 手勢令; s. 手势令), huozhitou (t. 豁指頭; s. 豁指头), or huaquan (划拳).</string>
-    <string name="paragraph_five">Throughout Japanese history there are frequent references to sansukumi-ken, meaning ken (fist) games of the three who are afraid of one another (i.e. A beats B, B beats C, and C beats A). This type of game originated in China before being imported to Japan and subsequently also becoming popular among the Japanese.</string>
-    <string name="paragraph_six">The earliest Japanese sansukumi-ken game was known as mushi-ken (虫拳), which was imported directly from China. In mushi-ken the frog (represented by the thumb) triumphs over the slug (represented by the little finger), which, in turn prevails over the snake (represented by the index finger), which triumphs over the frog. Although this game was imported from China the Japanese version differs in the animals represented. In adopting the game, the original Chinese characters for the poisonous centipede (蜈蜙) were apparently confused with the characters for the slug (蛞蝓). The most popular sansukumi-ken game in Japan was kitsune-ken (狐拳). In the game, a supernatural fox called a kitsune (狐) defeats the village head, the village head (庄屋) defeats the hunter, and the hunter (猟師) defeats the fox. Kitsune-ken, unlike mushi-ken or rock–paper–scissors, is played by making gestures with both hands.</string>
-    <string name="source_text">Source : https://en.wikipedia.org/wiki/Rock_paper_scissors</string>
-    <string name="bot_name">Sabrina</string>
-    <string name="player_name">Anonymous</string>
+    <string name="paper">Kertas</string>
+    <string name="scissor">Gunting</string>
+    <string name="rock">Batu</string>
+    <string name="versus">VS</string>
+    <string name="player">Pemain 1</string>
+    <string name="com">COM</string>
+
+    <string name="win">
+        &lt;small>&lt;small>&lt;small>&lt;small>&lt;small>
+        \t Pemain 1\t
+        &lt;br>
+        \tMENANG!\t
+        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>
+    </string>
+
+    <string name="lose">
+        &lt;small>&lt;small>&lt;small>&lt;small>&lt;small>
+        \t Pemain 2\t
+        &lt;br>
+        \tMENANG!\t
+        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>
+    </string>
+
+    <string name="draw">
+        &lt;small>&lt;small>&lt;small>&lt;small>&lt;small>
+        \t DRAW\t
+        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>
+    </string>
+
 </resources>
