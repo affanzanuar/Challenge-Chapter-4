@@ -4,10 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.text.SpannableString
 import android.text.Spanned
-import android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -80,6 +77,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
+        fun getStyleResult ( result : String) {
+
+        }
+
         fun startWithBot(){
             playerBot.playerHand = randomHand
             val result = playerOne.attack(playerBot)
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val lose = getString(R.string.lose)
             val loseStyle : Spanned = Html.fromHtml(lose,FROM_HTML_MODE_LEGACY)
 
-            when(result){
+            return when(result){
                 "draw" -> {
                     tvVersus.text = drawStyle
                     tvVersus.setBackgroundResource(R.drawable.draw)
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     tvVersus.setBackgroundResource(R.drawable.the_winner)
                     tvVersus.setTextColor(Color.WHITE)
                 }
-                "lose" -> {
+                else -> {
                     tvVersus.text = loseStyle
                     tvVersus.setBackgroundResource(R.drawable.the_winner)
                     tvVersus.setTextColor(Color.WHITE)
@@ -113,7 +114,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         when (p0?.id) {
-
             R.id.batu_player -> {
                 getRefreshSelected()
                 batu_player.setBackgroundResource(R.drawable.select_button)
@@ -143,6 +143,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
 
     companion object{
         private const val STATE_RESULT = "state_result"
