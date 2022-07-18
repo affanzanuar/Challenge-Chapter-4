@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnRockBot = findViewById(R.id.batu_opponent)
         btnPaperBot = findViewById(R.id.kertas_opponent)
         btnScissorBot = findViewById(R.id.gunting_opponent)
-        tvVersus = findViewById(R.id.iv_versus)
+        tvVersus = findViewById(R.id.tv_versus)
         btnReset = findViewById(R.id.iv_refresh)
     }
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         batu_opponent.setBackgroundResource(0)
         kertas_opponent.setBackgroundResource(0)
         gunting_opponent.setBackgroundResource(0)
-        iv_versus.setBackgroundResource(0)
+        tv_versus.setBackgroundResource(0)
     }
 
     override fun onClick(p0: View?) {
@@ -75,10 +75,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 HandType.B.hand -> btnPaperBot.setBackgroundResource(R.drawable.select_button)
                 HandType.C.hand -> btnScissorBot.setBackgroundResource(R.drawable.select_button)
             }
-        }
-
-        fun getStyleResult ( result : String) {
-
         }
 
         fun startWithBot(){
@@ -142,10 +138,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 tvVersus.setTextColor(Color.RED)
             }
         }
-    }
-
-
-    companion object{
-        private const val STATE_RESULT = "state_result"
     }
 }

@@ -91,7 +91,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/iv_versus"
+        android:id="@+id/tv_versus"
         android:layout_marginTop="100dp"
         android:textSize="92sp"
         style="@style/versus_view"
