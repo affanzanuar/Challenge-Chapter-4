@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.batuPlayer.setOnClickListener(this)
         binding.kertasPlayer.setOnClickListener(this)
         binding.guntingPlayer.setOnClickListener(this)
+        binding.ivRefresh.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -61,25 +62,26 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Log.d("myHand on Activity", playerOne.playerHand)
             Log.d("botHand on Activity", playerBot.playerHand)
             val draw = getString(R.string.draw)
-            val drawStyle : Spanned = Html.fromHtml(draw,FROM_HTML_MODE_LEGACY)
             val win = getString(R.string.win)
-            val winStyle : Spanned = Html.fromHtml(win,FROM_HTML_MODE_LEGACY)
             val lose = getString(R.string.lose)
-            val loseStyle : Spanned = Html.fromHtml(lose,FROM_HTML_MODE_LEGACY)
+
+            fun getSpannedStyle ( result : String ) : Spanned {
+                return Html.fromHtml(result,FROM_HTML_MODE_LEGACY)
+            }
 
             return when(result){
                 "draw" -> {
-                    binding.tvVersus.text = drawStyle
+                    binding.tvVersus.text = getSpannedStyle(draw)
                     binding.tvVersus.setBackgroundResource(R.drawable.draw)
                     binding.tvVersus.setTextColor(Color.WHITE)
                 }
                 "win" -> {
-                    binding.tvVersus.text = winStyle
+                    binding.tvVersus.text = getSpannedStyle(win)
                     binding.tvVersus.setBackgroundResource(R.drawable.the_winner)
                     binding.tvVersus.setTextColor(Color.WHITE)
                 }
                 else -> {
-                    binding.tvVersus.text = loseStyle
+                    binding.tvVersus.text = getSpannedStyle(lose)
                     binding.tvVersus.setBackgroundResource(R.drawable.the_winner)
                     binding.tvVersus.setTextColor(Color.WHITE)
                 }
