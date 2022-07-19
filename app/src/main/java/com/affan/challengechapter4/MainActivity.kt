@@ -7,57 +7,34 @@ import android.text.Html
 import android.text.Spanned
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
-import kotlinx.android.synthetic.main.activity_main.*
+import com.affan.challengechapter4.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var tvPlayerName : TextView
-    private lateinit var btnRockUser : ImageView
-    private lateinit var btnPaperUser : ImageView
-    private lateinit var btnScissorUser : ImageView
-    private lateinit var btnRockBot : ImageView
-    private lateinit var btnPaperBot : ImageView
-    private lateinit var btnScissorBot : ImageView
-    private lateinit var tvVersus : TextView
-    private lateinit var btnReset : ImageView
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        getInitComponent()
-        getInitListener()
-    }
-
-    private fun getInitComponent(){
-        tvPlayerName = findViewById(R.id.tv_player_name)
-        btnRockUser = findViewById(R.id.batu_player)
-        btnPaperUser = findViewById(R.id.kertas_player)
-        btnScissorUser = findViewById(R.id.gunting_player)
-        btnRockBot = findViewById(R.id.batu_opponent)
-        btnPaperBot = findViewById(R.id.kertas_opponent)
-        btnScissorBot = findViewById(R.id.gunting_opponent)
-        tvVersus = findViewById(R.id.tv_versus)
-        btnReset = findViewById(R.id.iv_refresh)
-    }
-
-    private fun getInitListener(){
-        btnRockUser.setOnClickListener(this)
-        btnPaperUser.setOnClickListener(this)
-        btnScissorUser.setOnClickListener(this)
-        btnReset.setOnClickListener(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setInitListener()
     }
 
     private fun getRefreshSelected(){
-        batu_player.setBackgroundResource(0)
-        kertas_player.setBackgroundResource(0)
-        gunting_player.setBackgroundResource(0)
-        batu_opponent.setBackgroundResource(0)
-        kertas_opponent.setBackgroundResource(0)
-        gunting_opponent.setBackgroundResource(0)
-        tv_versus.setBackgroundResource(0)
+        binding.batuPlayer.setBackgroundResource(0)
+        binding.kertasPlayer.setBackgroundResource(0)
+        binding.guntingPlayer.setBackgroundResource(0)
+        binding.batuOpponent.setBackgroundResource(0)
+        binding.kertasOpponent.setBackgroundResource(0)
+        binding.guntingOpponent.setBackgroundResource(0)
+        binding.tvVersus.setBackgroundResource(0)
+    }
+
+    private fun setInitListener(){
+        binding.batuPlayer.setOnClickListener(this)
+        binding.kertasPlayer.setOnClickListener(this)
+        binding.guntingPlayer.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -71,9 +48,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         fun getSelectBotHand(hand : String) {
             when(hand){
-                HandType.A.hand -> btnRockBot.setBackgroundResource(R.drawable.select_button)
-                HandType.B.hand -> btnPaperBot.setBackgroundResource(R.drawable.select_button)
-                HandType.C.hand -> btnScissorBot.setBackgroundResource(R.drawable.select_button)
+                HandType.A.hand -> binding.batuOpponent.setBackgroundResource(R.drawable.select_button)
+                HandType.B.hand -> binding.kertasOpponent.setBackgroundResource(R.drawable.select_button)
+                HandType.C.hand -> binding.guntingOpponent.setBackgroundResource(R.drawable.select_button)
             }
         }
 
@@ -92,19 +69,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             return when(result){
                 "draw" -> {
-                    tvVersus.text = drawStyle
-                    tvVersus.setBackgroundResource(R.drawable.draw)
-                    tvVersus.setTextColor(Color.WHITE)
+                    binding.tvVersus.text = drawStyle
+                    binding.tvVersus.setBackgroundResource(R.drawable.draw)
+                    binding.tvVersus.setTextColor(Color.WHITE)
                 }
                 "win" -> {
-                    tvVersus.text = winStyle
-                    tvVersus.setBackgroundResource(R.drawable.the_winner)
-                    tvVersus.setTextColor(Color.WHITE)
+                    binding.tvVersus.text = winStyle
+                    binding.tvVersus.setBackgroundResource(R.drawable.the_winner)
+                    binding.tvVersus.setTextColor(Color.WHITE)
                 }
                 else -> {
-                    tvVersus.text = loseStyle
-                    tvVersus.setBackgroundResource(R.drawable.the_winner)
-                    tvVersus.setTextColor(Color.WHITE)
+                    binding.tvVersus.text = loseStyle
+                    binding.tvVersus.setBackgroundResource(R.drawable.the_winner)
+                    binding.tvVersus.setTextColor(Color.WHITE)
                 }
             }
         }
@@ -112,21 +89,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (p0?.id) {
             R.id.batu_player -> {
                 getRefreshSelected()
-                batu_player.setBackgroundResource(R.drawable.select_button)
+                binding.batuPlayer.setBackgroundResource(R.drawable.select_button)
                 playerOne.playerHand = HandType.A.hand
                 startWithBot()
             }
 
             R.id.kertas_player -> {
                 getRefreshSelected()
-                kertas_player.setBackgroundResource(R.drawable.select_button)
+                binding.kertasPlayer.setBackgroundResource(R.drawable.select_button)
                 playerOne.playerHand = HandType.B.hand
                 startWithBot()
             }
 
             R.id.gunting_player -> {
                 getRefreshSelected()
-                gunting_player.setBackgroundResource(R.drawable.select_button)
+                binding.guntingPlayer.setBackgroundResource(R.drawable.select_button)
                 playerOne.playerHand = HandType.C.hand
                 startWithBot()
             }
@@ -134,8 +111,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.iv_refresh -> {
                 getRefreshSelected()
                 val versus = "VS"
-                tvVersus.text = versus
-                tvVersus.setTextColor(Color.RED)
+                binding.tvVersus.text = versus
+                binding.tvVersus.setTextColor(Color.RED)
             }
         }
     }
