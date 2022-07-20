@@ -12,7 +12,7 @@ abstract class PlayerEngine {
     private var b = HandType.B.hand
     private var c = HandType.C.hand
 
-    fun attack(opponent : PlayerEngine) : String {
+    fun getAttack(opponent : PlayerEngine) : String {
         val playerHand = this.playerHand
         val opponentHand = opponent.playerHand
 

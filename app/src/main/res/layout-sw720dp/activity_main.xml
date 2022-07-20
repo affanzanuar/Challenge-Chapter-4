@@ -47,7 +47,7 @@
         android:text="@string/player"
         android:textSize="50sp"
         style="@style/player_name"
-        app:layout_constraintBottom_toTopOf="@+id/batu_player"
+        app:layout_constraintBottom_toTopOf="@+id/iv_batu_player"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -56,31 +56,31 @@
         android:text="@string/com"
         android:textSize="50sp"
         style="@style/player_name"
-        app:layout_constraintBottom_toTopOf="@+id/batu_opponent"
+        app:layout_constraintBottom_toTopOf="@+id/iv_batu_opponent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/batu_player"
+        android:id="@+id/iv_batu_player"
         android:layout_marginStart="42dp"
         android:layout_marginBottom="34dp"
         android:maxWidth="160dp"
         android:maxHeight="160dp"
         style="@style/rock_drawable"
-        app:layout_constraintBottom_toTopOf="@+id/kertas_player"
+        app:layout_constraintBottom_toTopOf="@+id/iv_kertas_player"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/batu_opponent"
+        android:id="@+id/iv_batu_opponent"
         android:layout_marginEnd="42dp"
         android:layout_marginBottom="34dp"
         android:maxWidth="160dp"
         android:maxHeight="160dp"
         style="@style/rock_drawable"
-        app:layout_constraintBottom_toTopOf="@+id/kertas_opponent"
+        app:layout_constraintBottom_toTopOf="@+id/iv_kertas_opponent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/kertas_player"
+        android:id="@+id/iv_kertas_player"
         android:layout_marginStart="42dp"
         android:layout_marginTop="180dp"
         android:maxWidth="160dp"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/kertas_opponent"
+        android:id="@+id/iv_kertas_opponent"
         android:layout_marginEnd="42dp"
         android:layout_marginTop="180dp"
         android:maxWidth="160dp"
@@ -112,24 +112,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/gunting_player"
+        android:id="@+id/iv_gunting_player"
         android:layout_marginStart="42dp"
         android:layout_marginTop="34dp"
         android:maxWidth="160dp"
         android:maxHeight="160dp"
         style="@style/scissor_drawable"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kertas_player" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_kertas_player" />
 
     <ImageView
-        android:id="@+id/gunting_opponent"
+        android:id="@+id/iv_gunting_opponent"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="42dp"
         android:maxWidth="160dp"
         android:maxHeight="160dp"
         style="@style/scissor_drawable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kertas_opponent" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_kertas_opponent" />
 
     <ImageView
         android:id="@+id/iv_refresh"
