@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.lifecycle.ViewModelProvider
 import com.affan.challengechapter4.*
 import com.affan.challengechapter4.databinding.ActivityMainBinding
 import com.affan.challengechapter4.model.Bot
 import com.affan.challengechapter4.model.Person
-import com.affan.challengechapter4.utility.HandType
-import com.affan.challengechapter4.utility.ResultType
+import com.affan.challengechapter4.data.HandType
+import com.affan.challengechapter4.data.ResultType
 import com.affan.challengechapter4.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding : ActivityMainBinding
     private lateinit var viewModel : MainActivityViewModel
     private var playerOne : Person = Person ()
@@ -25,46 +25,50 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-        getInitListener()
+        setContentView(binding.root)
+        getClickListener()
         getObserve()
     }
 
-    private fun getInitListener() {
+    private fun getClickListener() {
         binding.ivBatuPlayer.setOnClickListener {
-            getRefresh()
-            randomHand()
+            getRefreshBackground()
+            getRefreshViewModel()
+            getRandomHand()
             viewModel.rockHandPlayer.value = HandType.ROCK.hand
             playerOne.playerHand = HandType.ROCK.hand
             viewModel.result.value = playerOne.getAttack(playerBot)
         }
 
         binding.ivGuntingPlayer.setOnClickListener {
-            getRefresh()
-            randomHand()
+            getRefreshBackground()
+            getRefreshViewModel()
+            getRandomHand()
             viewModel.scissorHandPlayer.value = HandType.SCISSOR.hand
             playerOne.playerHand = HandType.SCISSOR.hand
             viewModel.result.value = playerOne.getAttack(playerBot)
         }
 
         binding.ivKertasPlayer.setOnClickListener {
-            getRefresh()
-            randomHand()
+            getRefreshBackground()
+            getRefreshViewModel()
+            getRandomHand()
             viewModel.paperHandPlayer.value = HandType.PAPER.hand
             playerOne.playerHand = HandType.PAPER.hand
             viewModel.result.value = playerOne.getAttack(playerBot)
         }
 
         binding.ivRefresh.setOnClickListener {
-            getRefresh()
+            getRefreshBackground()
+            getRefreshViewModel()
             binding.tvVersus.text = ResultType.DEFAULT.result
             viewModel.result.value = ResultType.DEFAULT.result
         }
     }
 
-    private fun randomHand (){
-        val random = playerBot.getRandomHand()
+    private fun getRandomHand (){
+        val random = playerBot.getRandomHandBot()
         playerBot.playerHand = random
         when (playerBot.playerHand){
             HandType.ROCK.hand -> viewModel.rockHandBot.value = HandType.ROCK.hand
@@ -110,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fun getSpannedStyle ( result : String ) : Spanned {
+        fun getSpannedStyle (result : String) : Spanned {
             return Html.fromHtml(result,FROM_HTML_MODE_LEGACY)
         }
 
@@ -136,19 +140,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {
                     binding.tvVersus.text = ResultType.DEFAULT.result
-                    binding.tvVersus.setTextColor(Color.RED)
+                    binding.tvVersus.setTextColor(ContextCompat
+                        .getColor(this,R.color.red_versus))
                 }
             }
         }
     }
 
-    private fun getRefresh(){
+    private fun getRefreshViewModel(){
         viewModel.rockHandPlayer.value = null
         viewModel.scissorHandPlayer.value = null
         viewModel.paperHandPlayer.value = null
         viewModel.rockHandBot.value = null
         viewModel.scissorHandBot.value = null
         viewModel.paperHandBot.value = null
+    }
+
+    private fun getRefreshBackground(){
         binding.ivBatuPlayer.setBackgroundResource(0)
         binding.ivKertasPlayer.setBackgroundResource(0)
         binding.ivGuntingPlayer.setBackgroundResource(0)
