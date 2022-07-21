@@ -92,7 +92,7 @@
 
     <TextView
         android:id="@+id/tv_versus"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="70dp"
         android:textSize="150sp"
         style="@style/versus_view"
         app:layout_constraintBottom_toBottomOf="parent"

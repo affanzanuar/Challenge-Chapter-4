@@ -1,4 +1,4 @@
-package com.affan.challengechapter4
+package com.affan.challengechapter4.model
 
 class Bot : PlayerEngine() {
 

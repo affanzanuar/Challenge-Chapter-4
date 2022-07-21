@@ -1,4 +1,4 @@
-package com.affan.challengechapter4
+package com.affan.challengechapter4.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

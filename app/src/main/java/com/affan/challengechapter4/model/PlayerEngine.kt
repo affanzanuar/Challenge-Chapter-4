@@ -1,16 +1,18 @@
-package com.affan.challengechapter4
+package com.affan.challengechapter4.model
 
 import android.util.Log
+import com.affan.challengechapter4.utility.HandType
+import com.affan.challengechapter4.utility.ResultType
 
 abstract class PlayerEngine {
 
-    open var score : Int = 0
-    open var health : Double = 100.0
     open var playerHand : String = ""
 
-    private var a = HandType.A.hand
-    private var b = HandType.B.hand
-    private var c = HandType.C.hand
+    private var a = HandType.ROCK.hand
+    private var b = HandType.PAPER.hand
+    private var c = HandType.SCISSOR.hand
+
+    private val tag = PlayerEngine::class.java.simpleName
 
     fun getAttack(opponent : PlayerEngine) : String {
         val playerHand = this.playerHand
@@ -22,22 +24,20 @@ abstract class PlayerEngine {
         }
 
         return if (playerHand==opponentHand){
-            Log.d("RESULT","draw")
+            Log.d(tag,ResultType.DRAW.result)
             logHand()
-            "draw"
+            ResultType.DRAW.result
         } else if (
                 playerHand==a && opponentHand==c ||
                 playerHand==b && opponentHand==a ||
                 playerHand==c && opponentHand==b) {
-            this.score++
-            Log.d("RESULT","win")
+            Log.d(tag,ResultType.WIN.result)
             logHand()
-            "win"
+            ResultType.WIN.result
         } else {
-            opponent.score++
-            Log.d("RESULT","lose")
+            Log.d(tag,ResultType.LOSE.result)
             logHand()
-            "lose"
+            ResultType.LOSE.result
         }
     }
 }
