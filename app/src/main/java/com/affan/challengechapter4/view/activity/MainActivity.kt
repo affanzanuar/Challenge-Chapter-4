@@ -1,31 +1,29 @@
-package com.affan.challengechapter4.view
+package com.affan.challengechapter4.view.activity
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
-import androidx.lifecycle.ViewModelProvider
 import com.affan.challengechapter4.*
-import com.affan.challengechapter4.databinding.ActivityMainBinding
-import com.affan.challengechapter4.model.Bot
-import com.affan.challengechapter4.model.Person
+import com.affan.challengechapter4.model.user.Bot
+import com.affan.challengechapter4.model.user.Person
 import com.affan.challengechapter4.data.HandType
 import com.affan.challengechapter4.data.ResultType
+import com.affan.challengechapter4.databinding.ActivityMainBinding
 import com.affan.challengechapter4.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-    private lateinit var viewModel : MainActivityViewModel
     private var playerOne : Person = Person ()
     private var playerBot : Bot = Bot ()
+    private val viewModel : MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         setContentView(binding.root)
         getClickListener()
         getObserve()
@@ -124,19 +122,16 @@ class MainActivity : AppCompatActivity() {
                     val draw = getString(R.string.draw)
                     binding.tvVersus.text = getSpannedStyle(draw)
                     binding.tvVersus.setBackgroundResource(R.drawable.bg_draw)
-                    binding.tvVersus.setTextColor(Color.WHITE)
                 }
                 ResultType.WIN.result -> {
                     val win = getString(R.string.win)
                     binding.tvVersus.text = getSpannedStyle(win)
                     binding.tvVersus.setBackgroundResource(R.drawable.bg_winner)
-                    binding.tvVersus.setTextColor(Color.WHITE)
                 }
                 ResultType.LOSE.result -> {
                     val lose = getString(R.string.lose)
                     binding.tvVersus.text = getSpannedStyle(lose)
                     binding.tvVersus.setBackgroundResource(R.drawable.bg_winner)
-                    binding.tvVersus.setTextColor(Color.WHITE)
                 }
                 else -> {
                     binding.tvVersus.text = ResultType.DEFAULT.result

@@ -1,4 +1,4 @@
-package com.affan.challengechapter4.model
+package com.affan.challengechapter4.model.engine
 
 import android.util.Log
 import com.affan.challengechapter4.data.HandType

@@ -6,26 +6,23 @@
     <string name="versus">VS</string>
     <string name="player">Pemain 1</string>
     <string name="com">COM</string>
-
-    <string name="win">
+    <string name="win">&lt;font color=#FFFFFF>
         &lt;small>&lt;small>&lt;small>&lt;small>&lt;small>
         \t Pemain 1\t
         &lt;br>
         \tMENANG!\t
-        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>
+        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/font>
     </string>
-
-    <string name="lose">
+    <string name="lose">&lt;font color=#FFFFFF>
         &lt;small>&lt;small>&lt;small>&lt;small>&lt;small>
         \t Pemain 2\t
         &lt;br>
         \tMENANG!\t
-        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>
+        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/font>
     </string>
-
-    <string name="draw">
+    <string name="draw">&lt;font color=#FFFFFF>
         &lt;small>&lt;small>&lt;small>&lt;small>&lt;small>
         \t DRAW\t
-        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>
+        &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/font>
     </string>
 </resources>

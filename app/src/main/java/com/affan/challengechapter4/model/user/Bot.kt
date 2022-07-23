@@ -1,6 +1,7 @@
-package com.affan.challengechapter4.model
+package com.affan.challengechapter4.model.user
 
 import com.affan.challengechapter4.data.HandType
+import com.affan.challengechapter4.model.engine.PlayerEngine
 
 class Bot : PlayerEngine() {
 
