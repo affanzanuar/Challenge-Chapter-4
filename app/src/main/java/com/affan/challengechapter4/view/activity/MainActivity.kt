@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getClickListener() {
         binding.ivBatuPlayer.setOnClickListener {
-            getRefresh()
+            getRefreshBackground()
             viewModel.getRefreshViewModel()
             viewModel.setRockHandPlayer()
             playerOne.playerHand = HandType.ROCK.hand
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.ivGuntingPlayer.setOnClickListener {
-            getRefresh()
+            getRefreshBackground()
             viewModel.getRefreshViewModel()
             viewModel.setScissorHandPlayer()
             playerOne.playerHand = HandType.SCISSOR.hand
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.ivKertasPlayer.setOnClickListener {
-            getRefresh()
+            getRefreshBackground()
             viewModel.getRefreshViewModel()
             viewModel.setPaperHandPlayer()
             playerOne.playerHand = HandType.PAPER.hand
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.ivRefresh.setOnClickListener {
-            getRefresh()
+            getRefreshBackground()
             viewModel.getRefreshViewModel()
             binding.tvVersus.text = ResultType.DEFAULT.result
             viewModel.setResult(ResultType.DEFAULT.result)
@@ -65,8 +65,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getRandomHand (){
-        val random = playerBot.getRandomHandBot()
-        playerBot.playerHand = random
+        playerBot.getRandomHandBot().also {
+            playerBot.playerHand = it
+        }
         when (playerBot.playerHand){
             HandType.ROCK.hand -> viewModel.setRockHandOpponent()
             HandType.SCISSOR.hand -> viewModel.setScissorHandOpponent()
@@ -128,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getRefresh(){
+    private fun getRefreshBackground(){
         binding.ivBatuPlayer.setBackgroundResource(0)
         binding.ivKertasPlayer.setBackgroundResource(0)
         binding.ivGuntingPlayer.setBackgroundResource(0)
