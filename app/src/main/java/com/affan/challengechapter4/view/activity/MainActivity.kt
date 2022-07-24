@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import com.affan.challengechapter4.*
 import com.affan.challengechapter4.model.user.Bot
@@ -31,37 +30,33 @@ class MainActivity : AppCompatActivity() {
 
     private fun getClickListener() {
         binding.ivBatuPlayer.setOnClickListener {
-            getRefreshBackground()
-            getRefreshViewModel()
-            getRandomHand()
-            viewModel.rockHandPlayer.value = HandType.ROCK.hand
+            getRefresh()
+            viewModel.setRockHandPlayer()
             playerOne.playerHand = HandType.ROCK.hand
-            viewModel.result.value = playerOne.getAttack(playerBot)
+            getRandomHand()
+            viewModel.setResult(playerOne.getAttack(playerBot))
         }
 
         binding.ivGuntingPlayer.setOnClickListener {
-            getRefreshBackground()
-            getRefreshViewModel()
-            getRandomHand()
-            viewModel.scissorHandPlayer.value = HandType.SCISSOR.hand
+            getRefresh()
+            viewModel.setScissorHandPlayer()
             playerOne.playerHand = HandType.SCISSOR.hand
-            viewModel.result.value = playerOne.getAttack(playerBot)
+            getRandomHand()
+            viewModel.setResult(playerOne.getAttack(playerBot))
         }
 
         binding.ivKertasPlayer.setOnClickListener {
-            getRefreshBackground()
-            getRefreshViewModel()
-            getRandomHand()
-            viewModel.paperHandPlayer.value = HandType.PAPER.hand
+            getRefresh()
+            viewModel.setPaperHandPlayer()
             playerOne.playerHand = HandType.PAPER.hand
-            viewModel.result.value = playerOne.getAttack(playerBot)
+            getRandomHand()
+            viewModel.setResult(playerOne.getAttack(playerBot))
         }
 
         binding.ivRefresh.setOnClickListener {
-            getRefreshBackground()
-            getRefreshViewModel()
+            getRefresh()
             binding.tvVersus.text = ResultType.DEFAULT.result
-            viewModel.result.value = ResultType.DEFAULT.result
+            viewModel.setResult(ResultType.DEFAULT.result)
         }
     }
 
@@ -69,51 +64,43 @@ class MainActivity : AppCompatActivity() {
         val random = playerBot.getRandomHandBot()
         playerBot.playerHand = random
         when (playerBot.playerHand){
-            HandType.ROCK.hand -> viewModel.rockHandBot.value = HandType.ROCK.hand
-            HandType.SCISSOR.hand -> viewModel.scissorHandBot.value = HandType.SCISSOR.hand
-            HandType.PAPER.hand -> viewModel.paperHandBot.value = HandType.PAPER.hand
+            HandType.ROCK.hand -> viewModel.setRockHandOpponent()
+            HandType.SCISSOR.hand -> viewModel.setScissorHandOpponent()
+            HandType.PAPER.hand -> viewModel.setPaperHandOpponent()
         }
     }
 
     private fun getObserve(){
-        viewModel.rockHandPlayer.observe(this) {
-            if (viewModel.rockHandPlayer.value == HandType.ROCK.hand) {
-                binding.ivBatuPlayer.setBackgroundResource(R.drawable.bg_select_button)
-            }
-        }
-
-        viewModel.scissorHandPlayer.observe(this) {
-            if (viewModel.scissorHandPlayer.value == HandType.SCISSOR.hand) {
-                binding.ivGuntingPlayer.setBackgroundResource(R.drawable.bg_select_button)
-            }
-        }
-
-        viewModel.paperHandPlayer.observe(this) {
-            if (viewModel.paperHandPlayer.value == HandType.PAPER.hand) {
-                binding.ivKertasPlayer.setBackgroundResource(R.drawable.bg_select_button)
-            }
-        }
-
-        viewModel.rockHandBot.observe(this) {
-            if (viewModel.rockHandBot.value == HandType.ROCK.hand) {
-                binding.ivBatuOpponent.setBackgroundResource(R.drawable.bg_select_button)
-            }
-        }
-
-        viewModel.scissorHandBot.observe(this) {
-            if (viewModel.scissorHandBot.value == HandType.SCISSOR.hand) {
-                binding.ivGuntingOpponent.setBackgroundResource(R.drawable.bg_select_button)
-            }
-        }
-
-        viewModel.paperHandBot.observe(this) {
-            if (viewModel.paperHandBot.value == HandType.PAPER.hand) {
-                binding.ivKertasOpponent.setBackgroundResource(R.drawable.bg_select_button)
-            }
-        }
-
         fun getSpannedStyle (result : String) : Spanned {
             return Html.fromHtml(result,FROM_HTML_MODE_LEGACY)
+        }
+
+        viewModel.handPlayer.observe(this) {
+            when (viewModel.handPlayer.value){
+                HandType.ROCK.hand -> {
+                    binding.ivBatuPlayer.setBackgroundResource(R.drawable.bg_select_button)
+                }
+                HandType.SCISSOR.hand -> {
+                    binding.ivGuntingPlayer.setBackgroundResource(R.drawable.bg_select_button)
+                }
+                HandType.PAPER.hand -> {
+                    binding.ivKertasPlayer.setBackgroundResource(R.drawable.bg_select_button)
+                }
+            }
+        }
+
+        viewModel.handOpponent.observe(this) {
+            when (viewModel.handOpponent.value) {
+                HandType.ROCK.hand -> {
+                    binding.ivBatuOpponent.setBackgroundResource(R.drawable.bg_select_button)
+                }
+                HandType.SCISSOR.hand -> {
+                    binding.ivGuntingOpponent.setBackgroundResource(R.drawable.bg_select_button)
+                }
+                HandType.PAPER.hand -> {
+                    binding.ivKertasOpponent.setBackgroundResource(R.drawable.bg_select_button)
+                }
+            }
         }
 
         viewModel.result.observe(this){
@@ -133,25 +120,11 @@ class MainActivity : AppCompatActivity() {
                     binding.tvVersus.text = getSpannedStyle(lose)
                     binding.tvVersus.setBackgroundResource(R.drawable.bg_winner)
                 }
-                else -> {
-                    binding.tvVersus.text = ResultType.DEFAULT.result
-                    binding.tvVersus.setTextColor(ContextCompat
-                        .getColor(this,R.color.red_versus))
-                }
             }
         }
     }
 
-    private fun getRefreshViewModel(){
-        viewModel.rockHandPlayer.value = null
-        viewModel.scissorHandPlayer.value = null
-        viewModel.paperHandPlayer.value = null
-        viewModel.rockHandBot.value = null
-        viewModel.scissorHandBot.value = null
-        viewModel.paperHandBot.value = null
-    }
-
-    private fun getRefreshBackground(){
+    private fun getRefresh(){
         binding.ivBatuPlayer.setBackgroundResource(0)
         binding.ivKertasPlayer.setBackgroundResource(0)
         binding.ivGuntingPlayer.setBackgroundResource(0)
@@ -159,5 +132,6 @@ class MainActivity : AppCompatActivity() {
         binding.ivKertasOpponent.setBackgroundResource(0)
         binding.ivGuntingOpponent.setBackgroundResource(0)
         binding.tvVersus.setBackgroundResource(0)
+        viewModel.getRefreshViewModel()
     }
 }

@@ -16,8 +16,8 @@ abstract class PlayerEngine {
         val opponentHand = opponent.playerHand
 
         fun logHand(){
-            Log.d("$tag : PEMAIN 1 pick ",playerHand)
-            Log.d("$tag : PEMAIN 2 pick ",opponentHand)
+            Log.d("$tag : PLAYER 1 pick ",playerHand)
+            Log.d("$tag : COMPUTER pick ",opponentHand)
         }
 
         return if (playerHand==opponentHand){
@@ -29,11 +29,11 @@ abstract class PlayerEngine {
                 playerHand==b && opponentHand==a ||
                 playerHand==c && opponentHand==b) {
             logHand()
-            Log.d("$tag : PEMAIN 1 ",ResultType.WIN.result)
+            Log.d("$tag : PLAYER 1 ",ResultType.WIN.result)
             ResultType.WIN.result
         } else {
             logHand()
-            Log.d("$tag : PEMAIN 2 ",ResultType.WIN.result)
+            Log.d("$tag : COMPUTER ",ResultType.WIN.result)
             ResultType.LOSE.result
         }
     }
