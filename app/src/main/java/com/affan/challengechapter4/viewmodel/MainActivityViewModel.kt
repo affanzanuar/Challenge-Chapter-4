@@ -21,37 +21,37 @@ class MainActivityViewModel : ViewModel() {
 
     fun setRockHandPlayer () {
         val current = handPlayer.value ?: HandType.ROCK.hand
-        _handPlayer.postValue(current)
+        _handPlayer.value = current
     }
 
     fun setScissorHandPlayer () {
         val current = handPlayer.value ?: HandType.SCISSOR.hand
-        _handPlayer.postValue(current)
+        _handPlayer.value = current
     }
 
     fun setPaperHandPlayer () {
         val current = handPlayer.value ?: HandType.PAPER.hand
-        _handPlayer.postValue(current)
+        _handPlayer.value = current
     }
 
     fun setRockHandOpponent () {
         val current = handOpponent.value ?: HandType.ROCK.hand
-        _handOpponent.postValue(current)
+        _handOpponent.value = current
     }
 
     fun setScissorHandOpponent () {
         val current = handOpponent.value ?: HandType.SCISSOR.hand
-        _handOpponent.postValue(current)
+        _handOpponent.value = current
     }
 
     fun setPaperHandOpponent () {
         val current = handOpponent.value ?: HandType.PAPER.hand
-        _handOpponent.postValue(current)
+        _handOpponent.value = current
     }
 
     fun setResult (value : String) {
         val current = result.value ?: value
-        _result.postValue(current)
+        _result.value = current
     }
 
     fun getRefreshViewModel(){

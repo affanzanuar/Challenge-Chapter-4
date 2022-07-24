@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun getClickListener() {
         binding.ivBatuPlayer.setOnClickListener {
             getRefresh()
+            viewModel.getRefreshViewModel()
             viewModel.setRockHandPlayer()
             playerOne.playerHand = HandType.ROCK.hand
             getRandomHand()
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.ivGuntingPlayer.setOnClickListener {
             getRefresh()
+            viewModel.getRefreshViewModel()
             viewModel.setScissorHandPlayer()
             playerOne.playerHand = HandType.SCISSOR.hand
             getRandomHand()
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.ivKertasPlayer.setOnClickListener {
             getRefresh()
+            viewModel.getRefreshViewModel()
             viewModel.setPaperHandPlayer()
             playerOne.playerHand = HandType.PAPER.hand
             getRandomHand()
@@ -55,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.ivRefresh.setOnClickListener {
             getRefresh()
+            viewModel.getRefreshViewModel()
             binding.tvVersus.text = ResultType.DEFAULT.result
             viewModel.setResult(ResultType.DEFAULT.result)
         }
@@ -132,6 +136,5 @@ class MainActivity : AppCompatActivity() {
         binding.ivKertasOpponent.setBackgroundResource(0)
         binding.ivGuntingOpponent.setBackgroundResource(0)
         binding.tvVersus.setBackgroundResource(0)
-        viewModel.getRefreshViewModel()
     }
 }
