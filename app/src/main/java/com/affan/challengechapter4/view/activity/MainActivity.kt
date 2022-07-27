@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.ivBatuPlayer.setOnClickListener {
             getRefreshBackground()
             viewModel.getRefreshViewModel()
-            viewModel.setRockHandPlayer()
+            viewModel.setHandPlayer(HandType.ROCK.hand)
             playerOne.playerHand = HandType.ROCK.hand
             getRandomHand()
             viewModel.setResult(playerOne.getAttack(playerBot))
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         binding.ivGuntingPlayer.setOnClickListener {
             getRefreshBackground()
             viewModel.getRefreshViewModel()
-            viewModel.setScissorHandPlayer()
+            viewModel.setHandPlayer(HandType.SCISSOR.hand)
             playerOne.playerHand = HandType.SCISSOR.hand
             getRandomHand()
             viewModel.setResult(playerOne.getAttack(playerBot))
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         binding.ivKertasPlayer.setOnClickListener {
             getRefreshBackground()
             viewModel.getRefreshViewModel()
-            viewModel.setPaperHandPlayer()
+            viewModel.setHandPlayer(HandType.PAPER.hand)
             playerOne.playerHand = HandType.PAPER.hand
             getRandomHand()
             viewModel.setResult(playerOne.getAttack(playerBot))
@@ -69,9 +69,9 @@ class MainActivity : AppCompatActivity() {
             playerBot.playerHand = it
         }
         when (playerBot.playerHand){
-            HandType.ROCK.hand -> viewModel.setRockHandOpponent()
-            HandType.SCISSOR.hand -> viewModel.setScissorHandOpponent()
-            HandType.PAPER.hand -> viewModel.setPaperHandOpponent()
+            HandType.ROCK.hand -> viewModel.setHandOpponent(HandType.ROCK.hand)
+            HandType.SCISSOR.hand -> viewModel.setHandOpponent(HandType.SCISSOR.hand)
+            HandType.PAPER.hand -> viewModel.setHandOpponent(HandType.PAPER.hand)
         }
     }
 

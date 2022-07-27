@@ -3,7 +3,6 @@ package com.affan.challengechapter4.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.affan.challengechapter4.data.HandType
 
 class MainActivityViewModel : ViewModel() {
 
@@ -19,33 +18,13 @@ class MainActivityViewModel : ViewModel() {
     val result : LiveData<String>
         get() =_result
 
-    fun setRockHandPlayer () {
-        val current = handPlayer.value ?: HandType.ROCK.hand
+    fun setHandPlayer (hand : String) {
+        val current = handPlayer.value ?: hand
         _handPlayer.value = current
     }
 
-    fun setScissorHandPlayer () {
-        val current = handPlayer.value ?: HandType.SCISSOR.hand
-        _handPlayer.value = current
-    }
-
-    fun setPaperHandPlayer () {
-        val current = handPlayer.value ?: HandType.PAPER.hand
-        _handPlayer.value = current
-    }
-
-    fun setRockHandOpponent () {
-        val current = handOpponent.value ?: HandType.ROCK.hand
-        _handOpponent.value = current
-    }
-
-    fun setScissorHandOpponent () {
-        val current = handOpponent.value ?: HandType.SCISSOR.hand
-        _handOpponent.value = current
-    }
-
-    fun setPaperHandOpponent () {
-        val current = handOpponent.value ?: HandType.PAPER.hand
+    fun setHandOpponent (message : String) {
+        val current = handOpponent.value ?: message
         _handOpponent.value = current
     }
 
