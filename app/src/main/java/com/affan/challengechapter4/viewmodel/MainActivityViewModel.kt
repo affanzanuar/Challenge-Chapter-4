@@ -23,8 +23,8 @@ class MainActivityViewModel : ViewModel() {
         _handPlayer.value = current
     }
 
-    fun setHandOpponent (message : String) {
-        val current = handOpponent.value ?: message
+    fun setHandOpponent (hand : String) {
+        val current = handOpponent.value ?: hand
         _handOpponent.value = current
     }
 

@@ -25,4 +25,10 @@
         \t DRAW\t
         &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/font>
     </string>
+    <string name="play_game_with">Bermain suit melawan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sesama_pemain">sesama pemain.</string>
+    <string name="komputer">komputer.</string>
+    <string name="write_name">Tuliskan namamu di bawah</string>
 </resources>

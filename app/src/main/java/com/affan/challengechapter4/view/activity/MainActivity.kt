@@ -30,30 +30,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun getClickListener() {
         binding.ivBatuPlayer.setOnClickListener {
-            getRefreshBackground()
-            viewModel.getRefreshViewModel()
-            viewModel.setHandPlayer(HandType.ROCK.hand)
-            playerOne.playerHand = HandType.ROCK.hand
-            getRandomHand()
-            viewModel.setResult(playerOne.getAttack(playerBot))
+            startGame(HandType.ROCK.hand)
         }
 
         binding.ivGuntingPlayer.setOnClickListener {
-            getRefreshBackground()
-            viewModel.getRefreshViewModel()
-            viewModel.setHandPlayer(HandType.SCISSOR.hand)
-            playerOne.playerHand = HandType.SCISSOR.hand
-            getRandomHand()
-            viewModel.setResult(playerOne.getAttack(playerBot))
+            startGame(HandType.SCISSOR.hand)
         }
 
         binding.ivKertasPlayer.setOnClickListener {
-            getRefreshBackground()
-            viewModel.getRefreshViewModel()
-            viewModel.setHandPlayer(HandType.PAPER.hand)
-            playerOne.playerHand = HandType.PAPER.hand
-            getRandomHand()
-            viewModel.setResult(playerOne.getAttack(playerBot))
+            startGame(HandType.PAPER.hand)
         }
 
         binding.ivRefresh.setOnClickListener {
@@ -62,6 +47,15 @@ class MainActivity : AppCompatActivity() {
             binding.tvVersus.text = ResultType.DEFAULT.result
             viewModel.setResult(ResultType.DEFAULT.result)
         }
+    }
+
+    private fun startGame(hand : String){
+        getRefreshBackground()
+        viewModel.getRefreshViewModel()
+        viewModel.setHandPlayer(hand)
+        playerOne.playerHand = hand
+        getRandomHand()
+        viewModel.setResult(playerOne.getAttack(playerBot))
     }
 
     private fun getRandomHand (){
