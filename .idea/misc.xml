@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/drawable/bg_circle_indicator.xml" value="0.1365" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/drawable/bg_edit_text.xml" value="0.1365" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/drawable/button_shape.xml" value="0.1105" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/drawable/draw.xml" value="0.14" />
@@ -37,6 +38,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_landing_page.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_mainn.xml" value="0.28046875" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_menu.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_play.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/fragment_first_landing_page.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/fragment_second_landing_page.xml" value="0.22" />

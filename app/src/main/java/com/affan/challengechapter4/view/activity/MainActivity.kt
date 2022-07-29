@@ -12,6 +12,7 @@ import com.affan.challengechapter4.model.user.Person
 import com.affan.challengechapter4.data.HandType
 import com.affan.challengechapter4.data.ResultType
 import com.affan.challengechapter4.databinding.ActivityMainBinding
+import com.affan.challengechapter4.model.PlayerWithParcelable
 import com.affan.challengechapter4.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val personParcelable = intent.getParcelableExtra<PlayerWithParcelable>("PLAYER_NAME") as PlayerWithParcelable
+        val namePlayer = personParcelable.nama
+        binding.tvPlayerName.text = namePlayer
+
+
         getClickListener()
         getObserve()
     }
