@@ -1,4 +1,4 @@
-package com.affan.challengechapter4.model
+package com.affan.challengechapter4.model.user
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -1,4 +1,4 @@
-package com.affan.challengechapter4.model
+package com.affan.challengechapter4.model.user
 
 import java.io.Serializable
 

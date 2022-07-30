@@ -4,43 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".view.fragment.SecondLandingPageFragment">
+    tools:context=".view.activity.SplashScreenActivity">
 
-    <!-- TODO: Update blank fragment layout -->
     <ImageView
+        android:id="@+id/ivFirstSplashScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:maxWidth="215dp"
+        android:maxHeight="200dp"
         android:scaleType="fitCenter"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/second_landing_page"
-        app:layout_constraintBottom_toTopOf="@+id/playGameWith2"
+        android:src="@drawable/splash_screen1"
+        app:layout_constraintBottom_toTopOf="@+id/centerMark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/playGameWith2"
-        style="@style/landing_page"
-        android:text="@string/play_game_with"
-        android:textSize="22sp"
-        android:layout_marginTop="82dp"
+    <ImageView
+        android:id="@+id/centerMark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        style="@style/landing_page"
-        android:layout_marginTop="-5dp"
-        android:text="@string/komputer"
-        android:textSize="22sp"
+    <ImageView
+        android:id="@+id/ivSecondSplashScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:maxWidth="185dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/splash_screen2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playGameWith2" />
+        app:layout_constraintTop_toBottomOf="@+id/centerMark"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

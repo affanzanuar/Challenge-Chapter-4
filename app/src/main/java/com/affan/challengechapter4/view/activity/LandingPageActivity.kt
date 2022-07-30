@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.affan.challengechapter4.databinding.ActivityLandingPageBinding
-import com.affan.challengechapter4.model.PlayerWithParcelable
-import com.affan.challengechapter4.model.PlayerWithSerializable
+import com.affan.challengechapter4.model.user.PlayerWithSerializable
 import com.affan.challengechapter4.view.adapter.ViewPagerAdapter
 import com.affan.challengechapter4.view.fragment.FirstLandingPageFragment
 import com.affan.challengechapter4.view.fragment.SecondLandingPageFragment

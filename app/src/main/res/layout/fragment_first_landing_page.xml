@@ -11,19 +11,22 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-15dp"
         android:adjustViewBounds="true"
         android:maxWidth="215dp"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="32dp"
         android:src="@drawable/first_landing_page"
-        app:layout_constraintBottom_toTopOf="@+id/centerMark"
+        app:layout_constraintBottom_toTopOf="@+id/playGameWith"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/centerMark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/playGameWith"
+        style="@style/landing_page"
+        android:text="@string/play_game_with"
+        android:textSize="22sp"
+        android:layout_marginTop="82dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -31,24 +34,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/playGameWith"
-        android:text="@string/play_game_with"
-        android:textSize="22sp"
-        android:layout_marginTop="52dp"
         style="@style/landing_page"
+        android:layout_marginTop="-5dp"
+        android:text="@string/sesama_pemain"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/centerMark" />
-
-    <TextView
-        android:text="@string/sesama_pemain"
-        android:textSize="22sp"
-        android:layout_marginTop="-5dp"
-        style="@style/landing_page"
-        app:layout_constraintTop_toBottomOf="@+id/playGameWith"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/playGameWith" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,7 +50,9 @@ class ThirdLandingPageFragment : Fragment() {
     private fun getClickListener () {
         binding.btnNext.setOnClickListener {
             var isEmptyField = false
-            val textToEdit = binding.edtEditName.text.toString().trim().replace("\n","")
+            val textToEdit = binding.edtEditName.text.toString().trim()
+                .replace("\n","")
+                .replace(" ","")
             if (textToEdit.isEmpty()) {
                 isEmptyField = true
                 binding.edtEditName.error = "This field must be filled"

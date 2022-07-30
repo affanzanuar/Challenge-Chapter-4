@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.affan.challengechapter4.databinding.ActivityMenuBinding
-import com.affan.challengechapter4.model.PlayerWithParcelable
-import com.affan.challengechapter4.model.PlayerWithSerializable
+import com.affan.challengechapter4.model.user.PlayerWithParcelable
+import com.affan.challengechapter4.model.user.PlayerWithSerializable
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMenuBinding
