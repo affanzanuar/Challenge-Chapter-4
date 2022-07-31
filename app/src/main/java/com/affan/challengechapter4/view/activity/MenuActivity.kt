@@ -9,6 +9,7 @@ import com.affan.challengechapter4.model.user.PlayerWithSerializable
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
@@ -21,16 +22,38 @@ class MenuActivity : AppCompatActivity() {
         binding.tvUserVsUser.text = nameVsPlayer
         binding.tvUserVsCom.text = nameVsCom
 
-        binding.ivSinglePlayer.setOnClickListener {
+        fun getIntentPlayer (gameCategory : Int){
             val intent = Intent(this,MainActivity::class.java)
+            //passing data with Parcelable
             val playerParcelable = PlayerWithParcelable(namePlayer)
-            intent.putExtra("PLAYER_NAME",playerParcelable)
+            //passing data with Bundle
+            val bundle = Bundle()
+            bundle.putInt(GAME_CATEGORY, gameCategory)
+            intent.putExtra(PLAYER_NAME_PRCLB,playerParcelable)
+            intent.putExtras(bundle)
             startActivity(intent)
         }
 
+        binding.ivMultiPlayer.setOnClickListener {
+            getIntentPlayer(1)
+        }
+
+        binding.tvUserVsUser.setOnClickListener {
+            getIntentPlayer(1)
+        }
+
+        binding.ivSinglePlayer.setOnClickListener {
+            getIntentPlayer(2)
+        }
+
+        binding.tvUserVsCom.setOnClickListener{
+            getIntentPlayer(2)
+        }
     }
 
     companion object{
         const val EXTRA_NAME = "extra_name"
+        const val GAME_CATEGORY = "game_category"
+        const val PLAYER_NAME_PRCLB = "player_name"
     }
 }

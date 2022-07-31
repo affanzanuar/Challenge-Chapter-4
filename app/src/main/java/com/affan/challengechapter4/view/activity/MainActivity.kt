@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import com.affan.challengechapter4.*
@@ -18,35 +19,62 @@ import com.affan.challengechapter4.viewmodel.MainActivityViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private var playerOne : Person = Person ()
+    private var playerTwo : Person = Person ()
     private var playerBot : Bot = Bot ()
     private val viewModel : MainActivityViewModel by viewModels()
+    private var gameCategory : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val personParcelable = intent.getParcelableExtra<PlayerWithParcelable>("PLAYER_NAME")
+        val personParcelable = intent
+            .getParcelableExtra<PlayerWithParcelable>(MenuActivity.PLAYER_NAME_PRCLB)
                 as PlayerWithParcelable
         val namePlayer = personParcelable.nama
         binding.tvPlayerName.text = namePlayer
 
-
-        getClickListener()
+        getCategoryGame()
         getObserve()
     }
 
-    private fun getClickListener() {
+    private fun getCategoryGame (){
+        gameCategory = intent.getIntExtra(MenuActivity.GAME_CATEGORY,0)
+        if (gameCategory == 1){
+            binding.tvPlayerKomputer.setText(R.string.pemain_2)
+            getClickListenerPlayerOne()
+            getClickListenerPlayerTwo()
+            getToastLong("MultiPlayer dipilih")
+        } else {
+            getClickListenerPlayerOne()
+            getToastLong("SinglePlayer dipilih")
+        }
+    }
+
+    private fun getClickListenerPlayerOne() {
         binding.ivBatuPlayer.setOnClickListener {
             startGame(HandType.ROCK.hand)
+            if (gameCategory == 2){
+                getRandomHand()
+                viewModel.setResult(playerOne.getAttack(playerBot))
+            }
         }
 
         binding.ivGuntingPlayer.setOnClickListener {
             startGame(HandType.SCISSOR.hand)
+            if (gameCategory == 2){
+                getRandomHand()
+                viewModel.setResult(playerOne.getAttack(playerBot))
+            }
         }
 
         binding.ivKertasPlayer.setOnClickListener {
             startGame(HandType.PAPER.hand)
+            if (gameCategory == 2){
+                getRandomHand()
+                viewModel.setResult(playerOne.getAttack(playerBot))
+            }
         }
 
         binding.ivRefresh.setOnClickListener {
@@ -57,13 +85,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getClickListenerPlayerTwo(){
+        binding.ivBatuOpponent.setOnClickListener {
+            startGameTwo(HandType.ROCK.hand)
+            viewModel.setResult(playerOne.getAttack(playerTwo))
+        }
+
+        binding.ivGuntingOpponent.setOnClickListener {
+            startGameTwo(HandType.SCISSOR.hand)
+            viewModel.setResult(playerOne.getAttack(playerTwo))
+        }
+
+        binding.ivKertasOpponent.setOnClickListener {
+            startGameTwo(HandType.PAPER.hand)
+            viewModel.setResult(playerOne.getAttack(playerTwo))
+        }
+    }
+
     private fun startGame(hand : String){
         getRefreshBackground()
         viewModel.getRefreshViewModel()
         viewModel.setHandPlayer(hand)
         playerOne.playerHand = hand
-        getRandomHand()
-        viewModel.setResult(playerOne.getAttack(playerBot))
+    }
+
+    private fun startGameTwo(hand : String){
+        getRefreshBackground()
+        viewModel.getRefreshViewModel()
+        viewModel.setHandOpponent(hand)
+        playerTwo.playerHand = hand
     }
 
     private fun getRandomHand (){
@@ -139,5 +189,9 @@ class MainActivity : AppCompatActivity() {
         binding.ivKertasOpponent.setBackgroundResource(0)
         binding.ivGuntingOpponent.setBackgroundResource(0)
         binding.tvVersus.setBackgroundResource(0)
+    }
+
+    private fun getToastLong(message : String){
+        Toast.makeText(this,message,Toast.LENGTH_LONG).show()
     }
 }
