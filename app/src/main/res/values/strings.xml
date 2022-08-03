@@ -34,4 +34,5 @@
     <string name="user_vs_user">User vs User</string>
     <string name="user_vs_com">User vs CPU</string>
     <string name="pemain_2">\t\tPemain 2</string>
+    <string name="hasil_permainan">Hasil Permainan</string>
 </resources>

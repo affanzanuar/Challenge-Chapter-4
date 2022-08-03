@@ -14,4 +14,7 @@
     <color name="grey">#F1F0F0</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_landing_page">#0070C0</color>
+    <color name="button_dialod_1">#9b6dbb</color>
+    <color name="button_dialod_2">#ff9900</color>
+
 </resources>
