@@ -26,6 +26,7 @@
         &lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/small>&lt;/font>
     </string>
     <string name="play_game_with">Bermain suit melawan</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="sesama_pemain">sesama pemain.</string>
     <string name="komputer">komputer.</string>
@@ -33,6 +34,10 @@
     <string name="choose_opponent">PILIH LAWANMU</string>
     <string name="user_vs_user">User vs User</string>
     <string name="user_vs_com">User vs CPU</string>
-    <string name="pemain_2">\t\tPemain 2</string>
+    <string name="pemain_2">Pemain 2</string>
     <string name="hasil_permainan">Hasil Permainan</string>
+    <string name="cpu">CPU</string>
+    <string name="seri">SERI!</string>
+    <string name="winner">MENANG!</string>
+
 </resources>

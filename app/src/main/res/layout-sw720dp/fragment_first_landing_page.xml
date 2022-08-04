@@ -4,45 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.SplashScreenActivity">
+    android:background="@color/white"
+    tools:context=".view.fragment.FirstLandingPageFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <ImageView
-        android:id="@+id/ivFirstSplashScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:maxHeight="200dp"
+        android:maxWidth="405dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/splash_screen1"
-        app:layout_constraintBottom_toTopOf="@+id/centerMark"
+        android:layout_marginBottom="65dp"
+        android:src="@drawable/first_landing_page"
+        app:layout_constraintBottom_toTopOf="@+id/playGameWith"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/centerMark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="62dp"
+    <TextView
+        android:id="@+id/playGameWith"
+        style="@style/landing_page"
+        android:text="@string/play_game_with"
+        android:textSize="48sp"
+        android:layout_marginTop="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivSecondSplashScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:maxWidth="185dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/splash_screen"
+    <TextView
+        style="@style/landing_page"
+        android:layout_marginTop="-8dp"
+        android:text="@string/sesama_pemain"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/centerMark"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playGameWith" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

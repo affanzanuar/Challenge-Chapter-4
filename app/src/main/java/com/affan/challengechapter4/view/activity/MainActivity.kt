@@ -14,7 +14,7 @@ import com.affan.challengechapter4.model.user.PlayerWithParcelable
 import com.affan.challengechapter4.view.fragment.CustomDialogFragment
 import com.affan.challengechapter4.viewmodel.MainActivityViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
     private lateinit var binding : ActivityMainBinding
     private var playerOne : Person = Person ()
     private var playerTwo : Person = Person ()
@@ -27,108 +27,91 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.tvPlayerName.text = getNamePlayer()
-        getCategoryGame()
+        getChooseOpponent()
         getObserve()
     }
 
     private fun getNamePlayer(): String? {
+        // Receive data player name with Parcelable from MenuActivity
         val personParcelable = intent
-            .getParcelableExtra<PlayerWithParcelable>(MenuActivity.PLAYER_NAME_PRCLB)
+            .getParcelableExtra<PlayerWithParcelable>(MenuActivity.EXTRA_NAME_PARCELABLE)
                 as PlayerWithParcelable
         return personParcelable.nama
     }
-    private fun getCategoryGame (){
-        gameCategory = intent.getIntExtra(MenuActivity.GAME_CATEGORY,0)
+
+    private fun getGameCategory(): Int {
+        // Receive data game category single or multiplayer with Bundle
+        return intent.getIntExtra(MenuActivity.GAME_CATEGORY, 0)
+    }
+
+    private fun getChooseOpponent (){
+        gameCategory = getGameCategory()
         if (gameCategory == 1){
             binding.tvPlayerKomputer.setText(R.string.pemain_2)
+            setShortToast("MultiPlayer selected")
             getClickListenerPlayerOne()
             getClickListenerPlayerTwo()
-            getShortToast("MultiPlayer dipilih")
 
         } else {
+            setShortToast("SinglePlayer selected")
             getClickListenerPlayerOne()
-            getShortToast("SinglePlayer dipilih")
         }
     }
 
     private fun getClickListenerPlayerOne() {
-        gameCategory = intent.getIntExtra(MenuActivity.GAME_CATEGORY,0)
         binding.ivBatuPlayer.setOnClickListener {
             startGamePlayerOne(HandType.ROCK.hand)
-            if (gameCategory == 2){
-                getRandomHand()
-                viewModel.setResult(playerOne.getAttack(playerBot))
-            }
         }
 
         binding.ivGuntingPlayer.setOnClickListener {
             startGamePlayerOne(HandType.SCISSOR.hand)
-            if (gameCategory == 2){
-                getRandomHand()
-                viewModel.setResult(playerOne.getAttack(playerBot))
-            }
         }
 
         binding.ivKertasPlayer.setOnClickListener {
             startGamePlayerOne(HandType.PAPER.hand)
-            if (gameCategory == 2){
-                getRandomHand()
-                viewModel.setResult(playerOne.getAttack(playerBot))
-            }
         }
 
         binding.ivRefresh.setOnClickListener {
-            getRefreshBackgroundPlayer()
-            getRefreshBackgroundOpponent()
-            playerOne.playerHand = ""
-            playerTwo.playerHand = ""
-            viewModel.getRefreshViewModel()
-            binding.tvVersus.text = ResultType.DEFAULT.result
-            viewModel.setResult(ResultType.DEFAULT.result)
+            getRefreshGame()
         }
     }
 
     private fun getClickListenerPlayerTwo(){
         binding.ivBatuOpponent.setOnClickListener {
-            if (playerOne.playerHand.isEmpty()){
-                getLongToast("${getNamePlayer()} Pick First")
-            } else {
-                startGamePlayerTwo(HandType.ROCK.hand)
-                viewModel.setResult(playerOne.getAttack(playerTwo))
-            }
+            startGamePlayerTwo(HandType.ROCK.hand)
         }
 
         binding.ivGuntingOpponent.setOnClickListener {
-            if (playerOne.playerHand.isEmpty()){
-                getLongToast("${getNamePlayer()} Pick First")
-            } else {
-                startGamePlayerTwo(HandType.SCISSOR.hand)
-                viewModel.setResult(playerOne.getAttack(playerTwo))
-            }
+            startGamePlayerTwo(HandType.SCISSOR.hand)
         }
 
         binding.ivKertasOpponent.setOnClickListener {
-            if (playerOne.playerHand.isEmpty()){
-                getLongToast("${getNamePlayer()} Pick First")
-            } else {
-                startGamePlayerTwo(HandType.PAPER.hand)
-                viewModel.setResult(playerOne.getAttack(playerTwo))
-            }
+            startGamePlayerTwo(HandType.PAPER.hand)
         }
     }
 
     private fun startGamePlayerOne(hand : String){
+        gameCategory = getGameCategory()
         getRefreshBackgroundPlayer()
         viewModel.getRefreshViewModel()
         viewModel.setHandPlayer(hand)
         playerOne.playerHand = hand
+        if (gameCategory == 2){
+            getRandomHand()
+            viewModel.setResult(playerOne.getAttack(playerBot))
+        }
     }
 
     private fun startGamePlayerTwo(hand : String){
-        getRefreshBackgroundOpponent()
-        viewModel.getRefreshViewModel()
-        viewModel.setHandOpponent(hand)
-        playerTwo.playerHand = hand
+        if (playerOne.playerHand.isEmpty()){
+            setLongToast("${getNamePlayer()} Pick First")
+        } else {
+            getRefreshBackgroundOpponent()
+            viewModel.getRefreshViewModel()
+            viewModel.setHandOpponent(hand)
+            playerTwo.playerHand = hand
+            viewModel.setResult(playerOne.getAttack(playerTwo))
+        }
     }
 
     private fun getRandomHand (){
@@ -176,24 +159,25 @@ class MainActivity : AppCompatActivity() {
             gameCategory = intent.getIntExtra(MenuActivity.GAME_CATEGORY,0)
             when (viewModel.result.value){
                 ResultType.DRAW.result -> {
-                    val dialogFragment = CustomDialogFragment("DRAW"," ")
-                    dialogFragment.show(supportFragmentManager,null)
+                    getDialog(getString(R.string.seri)," ")
                 }
                 ResultType.WIN.result -> {
-                    val dialogFragment = CustomDialogFragment(getNamePlayer()!!, "MENANG!")
-                    dialogFragment.show(supportFragmentManager,null)
+                    getDialog(getNamePlayer()!!, getString(R.string.winner))
                 }
                 ResultType.LOSE.result -> {
                     if (gameCategory==1){
-                        val dialogFragment = CustomDialogFragment("Pemain 2", "MENANG!")
-                        dialogFragment.show(supportFragmentManager,null)
+                        getDialog(getString(R.string.pemain_2), getString(R.string.winner))
                     } else {
-                        val dialogFragment = CustomDialogFragment("CPU", "MENANG!")
-                        dialogFragment.show(supportFragmentManager,null)
+                        getDialog(getString(R.string.cpu), getString(R.string.winner))
                     }
                 }
             }
         }
+    }
+
+    private fun getDialog(name : String , result : String){
+        val dialogFragment = CustomDialogFragment(name, result)
+        dialogFragment.show(supportFragmentManager,null)
     }
 
     private fun getRefreshBackgroundPlayer(){
@@ -208,11 +192,29 @@ class MainActivity : AppCompatActivity() {
         binding.ivGuntingOpponent.setBackgroundResource(0)
     }
 
-    private fun getLongToast(message : String){
+    private fun getRefreshGame() {
+        getRefreshBackgroundPlayer()
+        getRefreshBackgroundOpponent()
+        playerOne.playerHand = ""
+        playerTwo.playerHand = ""
+        viewModel.getRefreshViewModel()
+        binding.tvVersus.text = ResultType.DEFAULT.result
+        viewModel.setResult(ResultType.DEFAULT.result)
+    }
+
+    private fun setLongToast(message : String){
         Toast.makeText(this,message,Toast.LENGTH_LONG).show()
     }
 
-    private fun getShortToast(message : String){
+    private fun setShortToast(message : String){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun getCloseDialog() {
+        getRefreshGame()
+    }
+
+    override fun goToMenu() {
+        onBackPressed()
     }
 }

@@ -1,5 +1,6 @@
 package com.affan.challengechapter4.view.fragment
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,19 +12,26 @@ import com.affan.challengechapter4.databinding.FragmentCustomDialogBinding
 
 class CustomDialogFragment(name : String, result : String) : DialogFragment() {
 
-    interface DialogListener{
-        fun getCloseDialog()
-    }
-
     private lateinit var binding : FragmentCustomDialogBinding
     private lateinit var listener : DialogListener
     private var name : String
     private var result : String
 
+    interface DialogListener{
+        fun getCloseDialog()
+        fun goToMenu()
+    }
 
     init {
         this.name = name
         this.result = result
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is DialogListener){
+            listener = context
+        }
     }
 
     override fun onCreateView(
@@ -32,7 +40,7 @@ class CustomDialogFragment(name : String, result : String) : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCustomDialogBinding.inflate(layoutInflater,container,false)
-        dialog?.setCancelable(true)
+        dialog?.setCancelable(false)
         return binding.root
     }
 
@@ -49,18 +57,17 @@ class CustomDialogFragment(name : String, result : String) : DialogFragment() {
         binding.tvTheWinner.text = result
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        binding.btnBackToMenu.setOnClickListener {
-//            val intent = Intent(viewLifecycleOwner,MenuActivity::class.java)
+        binding.btnPlayAgain.setOnClickListener {
+            dismiss()
+            if (this::listener.isInitialized){
+                listener.getCloseDialog()
+            }
         }
-    }
 
-//    override fun onAttachFragment(childFragment: Fragment) {
-//        if (childFragment is CustomDialogFragment){
-//            childFragment.setListener(this)
-//        }
-//    }
-
-    fun setListener(listener : DialogListener){
-        this.listener = listener
+        binding.btnBackToMenu.setOnClickListener {
+            if (this::listener.isInitialized){
+                listener.goToMenu()
+            }
+        }
     }
 }

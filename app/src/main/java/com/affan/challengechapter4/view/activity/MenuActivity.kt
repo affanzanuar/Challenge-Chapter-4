@@ -15,7 +15,9 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val personSerializable = intent.getSerializableExtra(EXTRA_NAME) as PlayerWithSerializable
+        // Receive data Serializable from LandingPageActivity
+        val personSerializable = intent.getSerializableExtra(EXTRA_NAME_SERIALIZABLE)
+                as PlayerWithSerializable
         val namePlayer = personSerializable.name
         val nameVsPlayer = "$namePlayer vs Pemain"
         val nameVsCom = "$namePlayer vs CPU"
@@ -24,12 +26,12 @@ class MenuActivity : AppCompatActivity() {
 
         fun getIntentPlayer (gameCategory : Int){
             val intent = Intent(this,MainActivity::class.java)
-            //passing data with Parcelable
+            // Passing data player name with Parcelable to MainActivity
             val playerParcelable = PlayerWithParcelable(namePlayer)
-            //passing data with Bundle
+            // Passing data game category with Bundle to MainActivity
             val bundle = Bundle()
             bundle.putInt(GAME_CATEGORY, gameCategory)
-            intent.putExtra(PLAYER_NAME_PRCLB,playerParcelable)
+            intent.putExtra(EXTRA_NAME_PARCELABLE,playerParcelable)
             intent.putExtras(bundle)
             startActivity(intent)
         }
@@ -52,8 +54,8 @@ class MenuActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val EXTRA_NAME = "extra_name"
+        const val EXTRA_NAME_SERIALIZABLE = "extra_name_serializable"
         const val GAME_CATEGORY = "game_category"
-        const val PLAYER_NAME_PRCLB = "player_name"
+        const val EXTRA_NAME_PARCELABLE = "extra_name_serializable"
     }
 }

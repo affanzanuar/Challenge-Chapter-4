@@ -41,9 +41,9 @@ class LandingPageActivity : AppCompatActivity(), ThirdLandingPageFragment.ThirdL
 
     override fun textFromThirdFragment(name: String) {
         val intent = Intent(this,MenuActivity::class.java)
-        //passing data with Serializable
+        //passing data with Serializable to MenuActivity
         val playerSerializable = PlayerWithSerializable(name)
-        intent.putExtra(MenuActivity.EXTRA_NAME,playerSerializable)
+        intent.putExtra(MenuActivity.EXTRA_NAME_SERIALIZABLE,playerSerializable)
         startActivity(intent)
     }
 }

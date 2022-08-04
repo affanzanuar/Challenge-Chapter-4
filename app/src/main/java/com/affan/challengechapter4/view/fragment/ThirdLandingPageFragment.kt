@@ -9,13 +9,12 @@ import com.affan.challengechapter4.databinding.FragmentThirdLandingPageBinding
 
 class ThirdLandingPageFragment : Fragment() {
 
-    interface ThirdListener {
-        fun textFromThirdFragment(name : String)
-    }
-
     private lateinit var binding : FragmentThirdLandingPageBinding
     private lateinit var listener : ThirdListener
 
+    interface ThirdListener {
+        fun textFromThirdFragment(name : String)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +26,8 @@ class ThirdLandingPageFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         getClickListener()
     }
 
