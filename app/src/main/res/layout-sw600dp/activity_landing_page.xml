@@ -22,6 +22,7 @@
         android:layout_height="68dp"
         app:ci_width="10.5dp"
         app:ci_height="10.5dp"
+        app:ci_margin="10dp"
         app:ci_drawable="@drawable/bg_circle_indicator"
         android:layout_marginBottom="69dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -11,11 +11,10 @@ import androidx.fragment.app.DialogFragment
 import com.affan.challengechapter4.databinding.FragmentCustomDialogBinding
 
 class CustomDialogFragment(name : String, result : String) : DialogFragment() {
-
     private lateinit var binding : FragmentCustomDialogBinding
-    private lateinit var listener : DialogListener
     private var name : String
     private var result : String
+    private lateinit var listener : DialogListener
 
     interface DialogListener{
         fun getCloseDialog()

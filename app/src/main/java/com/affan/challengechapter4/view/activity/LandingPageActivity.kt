@@ -19,7 +19,6 @@ class LandingPageActivity : AppCompatActivity(), ThirdLandingPageFragment.ThirdL
         setContentView(binding.root)
         initViewPagerAdapter()
         binding.circleIndicator.setViewPager(binding.viewPager)
-
     }
 
     private fun initViewPagerAdapter () {
@@ -41,6 +40,7 @@ class LandingPageActivity : AppCompatActivity(), ThirdLandingPageFragment.ThirdL
 
     override fun textFromThirdFragment(name: String) {
         val intent = Intent(this,MenuActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         //passing data with Serializable to MenuActivity
         val playerSerializable = PlayerWithSerializable(name)
         intent.putExtra(MenuActivity.EXTRA_NAME_SERIALIZABLE,playerSerializable)

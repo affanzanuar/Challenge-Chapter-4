@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.affan.challengechapter4.R
 
 class SecondLandingPageFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

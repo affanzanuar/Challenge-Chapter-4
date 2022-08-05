@@ -12,6 +12,7 @@
     <color name="button">#c3dae9</color>
     <color name="black">#FF000000</color>
     <color name="grey">#F1F0F0</color>
+    <color name="dark_grey">#ECECEC</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_landing_page">#0070C0</color>
     <color name="button_dialod_1">#9b6dbb</color>

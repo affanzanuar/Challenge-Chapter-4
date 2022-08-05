@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.affan.challengechapter4.databinding.FragmentThirdLandingPageBinding
 
 class ThirdLandingPageFragment : Fragment() {
-
     private lateinit var binding : FragmentThirdLandingPageBinding
     private lateinit var listener : ThirdListener
 

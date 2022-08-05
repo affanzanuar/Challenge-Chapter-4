@@ -2,6 +2,7 @@ package com.affan.challengechapter4.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.affan.challengechapter4.*
@@ -10,6 +11,7 @@ import com.affan.challengechapter4.model.user.Person
 import com.affan.challengechapter4.data.HandType
 import com.affan.challengechapter4.data.ResultType
 import com.affan.challengechapter4.databinding.ActivityMainBinding
+import com.affan.challengechapter4.databinding.CustomToastBinding
 import com.affan.challengechapter4.model.user.PlayerWithParcelable
 import com.affan.challengechapter4.view.fragment.CustomDialogFragment
 import com.affan.challengechapter4.viewmodel.MainActivityViewModel
@@ -20,7 +22,7 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
     private var playerTwo : Person = Person ()
     private var playerBot : Bot = Bot ()
     private val viewModel : MainActivityViewModel by viewModels()
-    private var gameCategory : Int = 0
+    private var gameCategory : Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,29 +33,30 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         getObserve()
     }
 
-    private fun getNamePlayer(): String? {
+    private fun getNamePlayer(): String {
         // Receive data player name with Parcelable from MenuActivity
         val personParcelable = intent
             .getParcelableExtra<PlayerWithParcelable>(MenuActivity.EXTRA_NAME_PARCELABLE)
                 as PlayerWithParcelable
-        return personParcelable.nama
+        return personParcelable.nama!!
     }
 
-    private fun getGameCategory(): Int {
-        // Receive data game category single or multiplayer with Bundle
-        return intent.getIntExtra(MenuActivity.GAME_CATEGORY, 0)
+    private fun getGameCategory(): Boolean {
+        // Receive data game category single or multiplayer with Bundle from MenuActivity
+        // if true, user will choose multi player and vice versa
+        return intent.getBooleanExtra(MenuActivity.EXTRA_CATEGORY,true)
     }
 
     private fun getChooseOpponent (){
         gameCategory = getGameCategory()
-        if (gameCategory == 1){
+        if (gameCategory){
             binding.tvPlayerKomputer.setText(R.string.pemain_2)
-            setShortToast("MultiPlayer selected")
+            setCustomToast("","MultiPlayer selected","")
             getClickListenerPlayerOne()
             getClickListenerPlayerTwo()
 
         } else {
-            setShortToast("SinglePlayer selected")
+            setCustomToast("","SinglePlayer selected","")
             getClickListenerPlayerOne()
         }
     }
@@ -73,6 +76,10 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
 
         binding.ivRefresh.setOnClickListener {
             getRefreshGame()
+        }
+
+        binding.ivClose?.setOnClickListener {
+            onBackPressed()
         }
     }
 
@@ -95,8 +102,9 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         getRefreshBackgroundPlayer()
         viewModel.getRefreshViewModel()
         viewModel.setHandPlayer(hand)
+        setCustomToast(getNamePlayer(),getString(R.string.choose_toast),hand)
         playerOne.playerHand = hand
-        if (gameCategory == 2){
+        if (!gameCategory){
             getRandomHand()
             viewModel.setResult(playerOne.getAttack(playerBot))
         }
@@ -104,12 +112,17 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
 
     private fun startGamePlayerTwo(hand : String){
         if (playerOne.playerHand.isEmpty()){
-            setLongToast("${getNamePlayer()} Pick First")
+            setCustomToast("","${getNamePlayer()} Pick First","")
         } else {
             getRefreshBackgroundOpponent()
             viewModel.getRefreshViewModel()
             viewModel.setHandOpponent(hand)
             playerTwo.playerHand = hand
+            setCustomToast(
+                getString(R.string.pemain_2),
+                getString(R.string.choose_toast),
+                hand
+            )
             viewModel.setResult(playerOne.getAttack(playerTwo))
         }
     }
@@ -118,6 +131,11 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         getRefreshBackgroundOpponent()
         playerBot.getRandomHandBot().also {
             playerBot.playerHand = it
+            setCustomToast(
+                getString(R.string.cpu),
+                getString(R.string.choose_toast),
+                it
+            )
         }
         when (playerBot.playerHand){
             HandType.ROCK.hand -> viewModel.setHandOpponent(HandType.ROCK.hand)
@@ -156,26 +174,26 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         }
 
         viewModel.result.observe(this){
-            gameCategory = intent.getIntExtra(MenuActivity.GAME_CATEGORY,0)
+            gameCategory = getGameCategory()
             when (viewModel.result.value){
                 ResultType.DRAW.result -> {
-                    getDialog(getString(R.string.seri)," ")
+                    setDialog(getString(R.string.seri),"")
                 }
                 ResultType.WIN.result -> {
-                    getDialog(getNamePlayer()!!, getString(R.string.winner))
+                    setDialog(getNamePlayer(), getString(R.string.winner))
                 }
                 ResultType.LOSE.result -> {
-                    if (gameCategory==1){
-                        getDialog(getString(R.string.pemain_2), getString(R.string.winner))
+                    if (gameCategory){
+                        setDialog(getString(R.string.pemain_2), getString(R.string.winner))
                     } else {
-                        getDialog(getString(R.string.cpu), getString(R.string.winner))
+                        setDialog(getString(R.string.cpu), getString(R.string.winner))
                     }
                 }
             }
         }
     }
 
-    private fun getDialog(name : String , result : String){
+    private fun setDialog(name : String , result : String){
         val dialogFragment = CustomDialogFragment(name, result)
         dialogFragment.show(supportFragmentManager,null)
     }
@@ -202,12 +220,15 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         viewModel.setResult(ResultType.DEFAULT.result)
     }
 
-    private fun setLongToast(message : String){
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show()
-    }
-
-    private fun setShortToast(message : String){
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+    private fun setCustomToast(user : String , choose : String , hand : String){
+        val layout = CustomToastBinding.inflate(layoutInflater).root
+        val textChoose = "$user $choose $hand"
+        layout.findViewById<TextView>(R.id.tvChoose).text = textChoose
+        Toast(this).apply {
+            duration = Toast.LENGTH_SHORT
+            view = layout
+            show()
+        }
     }
 
     override fun getCloseDialog() {
