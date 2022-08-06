@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.affan.challengechapter4.R
 import com.affan.challengechapter4.databinding.FragmentThirdLandingPageBinding
 
 class ThirdLandingPageFragment : Fragment() {
@@ -38,7 +39,7 @@ class ThirdLandingPageFragment : Fragment() {
                 .replace(" ","")
             if (textToEdit.isEmpty()) {
                 isEmptyField = true
-                binding.edtEditName.error = "This field must be filled"
+                binding.edtEditName.error = getString(R.string.empty_field)
             }
             if (!isEmptyField){
                 listener.textFromThirdFragment(textToEdit)

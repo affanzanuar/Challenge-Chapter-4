@@ -8,6 +8,7 @@ class ViewPagerAdapter (
     private val items : ArrayList<Fragment>,
     activity : AppCompatActivity
         ) : FragmentStateAdapter (activity){
+
     override fun getItemCount(): Int {
         return items.size
     }
@@ -15,5 +16,4 @@ class ViewPagerAdapter (
     override fun createFragment(position: Int): Fragment {
         return items[position]
     }
-
 }

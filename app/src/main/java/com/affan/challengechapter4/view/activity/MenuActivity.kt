@@ -7,6 +7,7 @@ import com.affan.challengechapter4.R
 import com.affan.challengechapter4.databinding.ActivityMenuBinding
 import com.affan.challengechapter4.model.user.PlayerWithParcelable
 import com.affan.challengechapter4.model.user.PlayerWithSerializable
+import com.google.android.material.snackbar.Snackbar
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMenuBinding
@@ -16,6 +17,7 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getNameSerializable()
+        setCustomSnackBar(getNameSerializable())
         getOnClickListener()
     }
 
@@ -37,11 +39,13 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
+    /**
+    Passing data player name with Parcelable to MainActivity and game category (SinglePlayer
+    or MultiPlayer) with Bundle to MainActivity
+    **/
     private fun setNamePlayerAndCategory (gameCategory : Boolean){
         val intent = Intent(this,MainActivity::class.java)
-        // Passing data player name with Parcelable to MainActivity
         val playerParcelable = PlayerWithParcelable(getNameSerializable())
-        // Passing data game category with Bundle to MainActivity
         val bundle = Bundle()
         bundle.putBoolean(EXTRA_CATEGORY, gameCategory)
         intent.putExtra(EXTRA_NAME_PARCELABLE, playerParcelable)
@@ -49,8 +53,8 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    // Receive data Serializable from LandingPageActivity
     private fun getNameSerializable () : String {
-        // Receive data Serializable from LandingPageActivity
         val personSerializable = intent.getSerializableExtra(EXTRA_NAME_SERIALIZABLE)
                 as PlayerWithSerializable
         val namePlayer = personSerializable.name
@@ -59,6 +63,18 @@ class MenuActivity : AppCompatActivity() {
         binding.tvUserVsUser.text = nameVsPlayer
         binding.tvUserVsCom.text = nameVsCom
         return namePlayer
+    }
+
+    private fun setCustomSnackBar (message : String) {
+        val snackBar = binding.root.let {
+            Snackbar.make(
+                it,
+                "${getString(R.string.welcome_snackbar)} $message",
+                Snackbar.LENGTH_INDEFINITE)
+        }
+        snackBar.setAction(getString(R.string.close_snackbar)) { snackBar.dismiss() }
+        snackBar.setActionTextColor(applicationContext.getColor(R.color.button_dialod_2))
+        snackBar.show()
     }
 
     companion object{

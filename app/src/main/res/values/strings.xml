@@ -41,4 +41,8 @@
     <string name="seri">SERI!</string>
     <string name="winner">MENANG!</string>
     <string name="choose_toast">Memilih</string>
+    <string name="close_snackbar">Tutup</string>
+    <string name="welcome_snackbar">Selamat Datang</string>
+    <string name="pick">Pick First!</string>
+    <string name="empty_field">This field must be filled</string>
 </resources>

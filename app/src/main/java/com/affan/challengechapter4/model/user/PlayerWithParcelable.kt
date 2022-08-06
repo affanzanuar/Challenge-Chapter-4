@@ -3,12 +3,11 @@ package com.affan.challengechapter4.model.user
 import android.os.Parcel
 import android.os.Parcelable
 
-data class PlayerWithParcelable (val nama : String?) : Parcelable {
-    constructor(parcel: Parcel) : this(parcel.readString()) {
-    }
+data class PlayerWithParcelable (val playerName : String?) : Parcelable {
+    constructor(parcel: Parcel) : this(parcel.readString())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(nama)
+        parcel.writeString(playerName)
     }
 
     override fun describeContents(): Int {

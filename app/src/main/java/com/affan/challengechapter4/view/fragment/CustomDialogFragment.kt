@@ -39,6 +39,11 @@ class CustomDialogFragment(name : String, result : String) : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCustomDialogBinding.inflate(layoutInflater,container,false)
+        /**
+         I set "setCancelable" to false, because dialog in the flowchart only has two decisions.
+         All those decisions are "back to menu" and "play again". Play again button automatically
+         refresh this game.
+         **/
         dialog?.setCancelable(false)
         return binding.root
     }
@@ -47,7 +52,8 @@ class CustomDialogFragment(name : String, result : String) : DialogFragment() {
         super.onResume()
         dialog?.window?.setLayout(
             ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT)
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -16,6 +16,7 @@ import com.affan.challengechapter4.model.user.PlayerWithParcelable
 import com.affan.challengechapter4.view.fragment.CustomDialogFragment
 import com.affan.challengechapter4.viewmodel.MainActivityViewModel
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
     private lateinit var binding : ActivityMainBinding
     private var playerOne : Person = Person ()
@@ -33,17 +34,19 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         getObserve()
     }
 
+    // Receive data player name with Parcelable from MenuActivity
     private fun getNamePlayer(): String {
-        // Receive data player name with Parcelable from MenuActivity
         val personParcelable = intent
             .getParcelableExtra<PlayerWithParcelable>(MenuActivity.EXTRA_NAME_PARCELABLE)
                 as PlayerWithParcelable
-        return personParcelable.nama!!
+        return personParcelable.playerName!!
     }
 
+    /**
+    Receive data game category single or multiplayer with Bundle from MenuActivity.
+    If true, user will choose multi player and vice versa
+     **/
     private fun getGameCategory(): Boolean {
-        // Receive data game category single or multiplayer with Bundle from MenuActivity
-        // if true, user will choose multi player and vice versa
         return intent.getBooleanExtra(MenuActivity.EXTRA_CATEGORY,true)
     }
 
@@ -51,12 +54,9 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         gameCategory = getGameCategory()
         if (gameCategory){
             binding.tvPlayerKomputer.setText(R.string.pemain_2)
-            setCustomToast("","MultiPlayer selected","")
             getClickListenerPlayerOne()
             getClickListenerPlayerTwo()
-
         } else {
-            setCustomToast("","SinglePlayer selected","")
             getClickListenerPlayerOne()
         }
     }
@@ -110,19 +110,16 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         }
     }
 
+    // We make player one play first, to match the flowchart
     private fun startGamePlayerTwo(hand : String){
         if (playerOne.playerHand.isEmpty()){
-            setCustomToast("","${getNamePlayer()} Pick First","")
+            setCustomToast(getNamePlayer(),getString(R.string.pick),"")
         } else {
             getRefreshBackgroundOpponent()
             viewModel.getRefreshViewModel()
             viewModel.setHandOpponent(hand)
             playerTwo.playerHand = hand
-            setCustomToast(
-                getString(R.string.pemain_2),
-                getString(R.string.choose_toast),
-                hand
-            )
+            setCustomToast(getString(R.string.pemain_2), getString(R.string.choose_toast), hand)
             viewModel.setResult(playerOne.getAttack(playerTwo))
         }
     }
@@ -131,11 +128,7 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
         getRefreshBackgroundOpponent()
         playerBot.getRandomHandBot().also {
             playerBot.playerHand = it
-            setCustomToast(
-                getString(R.string.cpu),
-                getString(R.string.choose_toast),
-                it
-            )
+            setCustomToast(getString(R.string.cpu), getString(R.string.choose_toast), it)
         }
         when (playerBot.playerHand){
             HandType.ROCK.hand -> viewModel.setHandOpponent(HandType.ROCK.hand)
