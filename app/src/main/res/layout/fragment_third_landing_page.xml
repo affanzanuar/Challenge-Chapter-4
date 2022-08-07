@@ -42,6 +42,7 @@
         android:backgroundTint="@color/blue_landing_page"
         android:fontFamily="@font/comicsansbold"
         android:maxLength="6"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
