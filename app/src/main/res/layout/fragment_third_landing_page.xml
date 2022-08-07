@@ -41,7 +41,7 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/blue_landing_page"
         android:fontFamily="@font/comicsansbold"
-        android:maxLength="8"
+        android:maxLength="6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

@@ -33,7 +33,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-land/activity_play.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-small-land/activity_main.xml" value="0.7333333333333334" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-small/activity_landing_page.xml" value="1.0" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-small/activity_main.xml" value="0.8333333333333334" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-small/activity_main.xml" value="1.3333333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-small/activity_menu.xml" value="1.0" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-small/activity_splash_screen.xml" value="1.0" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-small/fragment_custom_dialog.xml" value="1.0" />
@@ -73,12 +73,13 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-sw720dp/fragment_first_landing_page.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-sw720dp/fragment_second_landing_page.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-sw720dp/fragment_third_landing_page.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-sw960dp/activity_main.xml" value="0.11851092896174864" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-v26/activity_help.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-v26/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout-xlarge/activity_main.xml" value="0.28046875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_help.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_landing_page.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_mainn.xml" value="0.28046875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_menu.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/ChallengeChapter4/app/src/main/res/layout/activity_play.xml" value="0.16666666666666666" />

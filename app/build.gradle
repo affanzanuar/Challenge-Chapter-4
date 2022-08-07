@@ -67,8 +67,7 @@ dependencies {
     //Circle Indicator
     implementation 'me.relex:circleindicator:2.1.6'
 
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+    //Coil
+    implementation("io.coil-kt:coil:1.1.1")
 
 }

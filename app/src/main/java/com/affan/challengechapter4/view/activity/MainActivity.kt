@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
             getClickListenerPlayerOne()
             getClickListenerPlayerTwo()
         } else {
+            binding.tvPlayerKomputer.setText(R.string.cpu)
             getClickListenerPlayerOne()
         }
     }
