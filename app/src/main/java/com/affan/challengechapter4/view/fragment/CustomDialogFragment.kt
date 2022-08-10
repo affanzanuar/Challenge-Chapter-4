@@ -1,6 +1,5 @@
 package com.affan.challengechapter4.view.fragment
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,27 +9,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.affan.challengechapter4.databinding.FragmentCustomDialogBinding
 
-class CustomDialogFragment(name : String, result : String) : DialogFragment() {
+class CustomDialogFragment(
+    private val closeDialog :()-> Unit,
+    private val goToMenu : ()-> Unit,
+    name : String,
+    result : String
+) : DialogFragment() {
     private lateinit var binding : FragmentCustomDialogBinding
     private var name : String
     private var result : String
-    private lateinit var listener : DialogListener
-
-    interface DialogListener{
-        fun getCloseDialog()
-        fun goToMenu()
-    }
 
     init {
         this.name = name
         this.result = result
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is DialogListener){
-            listener = context
-        }
     }
 
     override fun onCreateView(
@@ -64,15 +55,11 @@ class CustomDialogFragment(name : String, result : String) : DialogFragment() {
 
         binding.btnPlayAgain.setOnClickListener {
             dismiss()
-            if (this::listener.isInitialized){
-                listener.getCloseDialog()
-            }
+            closeDialog()
         }
 
         binding.btnBackToMenu.setOnClickListener {
-            if (this::listener.isInitialized){
-                listener.goToMenu()
-            }
+            goToMenu()
         }
     }
 }

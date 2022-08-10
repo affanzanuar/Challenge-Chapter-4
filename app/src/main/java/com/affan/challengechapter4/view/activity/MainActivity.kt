@@ -17,7 +17,7 @@ import com.affan.challengechapter4.view.fragment.CustomDialogFragment
 import com.affan.challengechapter4.viewmodel.MainActivityViewModel
 
 @Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private var playerOne : Person = Person ()
     private var playerTwo : Person = Person ()
@@ -188,7 +188,12 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
     }
 
     private fun setDialog(name : String , result : String){
-        val dialogFragment = CustomDialogFragment(name, result)
+        val dialogFragment = CustomDialogFragment(
+            goToMenu={onBackPressed()},
+            closeDialog={ getRefreshGame()},
+            name = name,
+            result = result
+        )
         dialogFragment.show(supportFragmentManager,null)
     }
 
@@ -223,13 +228,5 @@ class MainActivity : AppCompatActivity(), CustomDialogFragment.DialogListener {
             view = layout
             show()
         }
-    }
-
-    override fun getCloseDialog() {
-        getRefreshGame()
-    }
-
-    override fun goToMenu() {
-        onBackPressed()
     }
 }

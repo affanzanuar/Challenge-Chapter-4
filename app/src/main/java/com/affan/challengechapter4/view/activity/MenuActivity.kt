@@ -7,6 +7,7 @@ import com.affan.challengechapter4.R
 import com.affan.challengechapter4.databinding.ActivityMenuBinding
 import com.affan.challengechapter4.model.user.PlayerWithParcelable
 import com.affan.challengechapter4.model.user.PlayerWithSerializable
+import com.affan.challengechapter4.view.fragment.ThirdLandingPageFragment
 import com.google.android.material.snackbar.Snackbar
 
 class MenuActivity : AppCompatActivity() {
@@ -40,8 +41,8 @@ class MenuActivity : AppCompatActivity() {
     }
 
     /**
-    Passing data player name with Parcelable to MainActivity and game category (SinglePlayer
-    or MultiPlayer) with Bundle to MainActivity
+    Passing data player name with Parcelable and game category (SinglePlayer or MultiPlayer)
+    with Bundle to MainActivity
     **/
     private fun setNamePlayerAndCategory (gameCategory : Boolean){
         val intent = Intent(this,MainActivity::class.java)
@@ -53,9 +54,10 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    // Receive data Serializable from LandingPageActivity
-    private fun getNameSerializable () : String {
-        val personSerializable = intent.getSerializableExtra(EXTRA_NAME_SERIALIZABLE)
+    // Receive data Serializable from ThirdLandingPageFragment
+    private fun getNameSerializable(): String {
+        val personSerializable = intent
+            .getSerializableExtra(ThirdLandingPageFragment.EXTRA_NAME_SERIALIZABLE)
                 as PlayerWithSerializable
         val namePlayer = personSerializable.name
         val nameVsPlayer = "$namePlayer vs ${getString(R.string.pemain)}"
@@ -78,8 +80,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val EXTRA_NAME_SERIALIZABLE = "extra_name_serializable"
-        const val EXTRA_NAME_PARCELABLE = "extra_name_serializable"
+        const val EXTRA_NAME_PARCELABLE = "extra_name_parcelable"
         const val EXTRA_CATEGORY = "extra_category"
     }
 }
