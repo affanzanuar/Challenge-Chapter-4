@@ -189,10 +189,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setDialog(name : String , result : String){
         val dialogFragment = CustomDialogFragment(
-            goToMenu={onBackPressed()},
-            closeDialog={ getRefreshGame()},
-            name = name,
-            result = result
+            {getRefreshGame()},
+            {onBackPressed()},
+            name,
+            result
         )
         dialogFragment.show(supportFragmentManager,null)
     }
